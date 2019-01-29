@@ -51,5 +51,15 @@ To be used after you link your local repo to the project on GitLab.
     Wait for code approval.
     git checkout master
     git pull origin master
+
+    //This is for deleting your branch...do this at the end, otherwise you
+    //will have to create a new branch every time you do work
     git branch -D [YOUR_INITIALS]_[WORK_DESIGNATION]
 
+How to add project to github repository
+
+    git init
+    git add .
+    git commit -m "my commit"
+    git remote set-url origin git@github.com:username/repo.git
+    git push origin master
