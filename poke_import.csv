@@ -48,7 +48,6 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Crobat,Poison,Flying,85,Inner Focus,Infiltrator
 ,Oddish,Grass,Poison,45,Chlorophyll,Run Away
 ,Gloom,Grass,Poison,60,Chlorophyll,Stench
-,,,,,,
 ,Vileplume,Grass,Poison,75,Chlorophyll,Effect Spore
 ,Bellossom,Grass,-----,75,Chlorophyll,Healer
 ,Paras,Bug,Grass,35,Effect Spore,Damp
@@ -67,13 +66,11 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Arcanine,Fire,-----,90,Intimidate,Justified
 ,Poliwag,Water,-----,40,Water Absorb,Swift Swim
 ,Poliwhirl,Water,-----,65,Water Absorb,Swift Swim
-,,,,,,
 ,Poliwrath,Water,Fighting,90,Water Absorb,Swift Swim
 ,Politoed,Water,-----,90,Water Absorb,Drizzle
 ,Abra,Psychic,-----,25,Synchronize,Magic Guard
 ,Kadabra,Psychic,-----,40,Synchronize,Magic Guard
 ,Alakazam,Psychic,-----,55,Synchronize,Magic Guard
-,Alakazam,Psychic,-----,55,Trace,-----
 ,Machop,Fighting,-----,70,Guts,Steadfast
 ,Machoke,Fighting,-----,80,Guts,Steadfast
 ,Machamp,Fighting,-----,90,Guts,Steadfast
@@ -88,9 +85,7 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Ponyta,Fire,-----,50,Run Away,Flame Body
 ,Rapidash,Fire,-----,65,Run Away,Flame Body
 ,Slowpoke,Water,Psychic,90,Oblivious,Regenerator
-,,,,,,
 ,Slowbro,Water,Psychic,95,Oblivious,Regenerator
-,Slowbro,Water,Psychic,95,Shell Armor,-----
 ,Slowking,Water,Psychic,95,Oblivious,Regenerator
 ,Magnemite,Electric,Steel,25,Magnet Pull,Analytic
 ,Magneton,Electric,Steel,50,Magnet Pull,Analytic
@@ -107,10 +102,8 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Gastly,Ghost,Poison,30,Levitate,-----
 ,Haunter,Ghost,Poison,45,Levitate,-----
 ,Gengar,Ghost,Poison,60,Levitate,-----
-,Gengar,Ghost,Poison,60,Shadow Tag,-----
 ,Onix,Rock,Ground,35,Rock Head,Weak Armor
 ,Steelix,Steel,Ground,75,Rock Head,Sheer Force
-,Steelix,Steel,Ground,75,Sand Force,-----
 ,Drowzee,Psychic,-----,60,Insomnia,Inner Focus
 ,Hypno,Psychic,-----,85,Insomnia,Inner Focus
 ,Krabby,Water,-----,30,Hyper Cutter,Sheer Force
@@ -122,8 +115,6 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Cubone,Ground,-----,50,Rock Head,Battle Armor
 ,Marowak,Ground,-----,60,Rock Head,Battle Armor
 ,Tyrogue,Fighting,-----,35,Guts,Vital Spirit
-,,,,,,
-,,,,,,
 ,Hitmonlee,Fighting,-----,50,Limber,Unburden
 ,Hitmonchan,Fighting,-----,50,Keen Eye,Inner Focus
 ,Hitmontop,Fighting,-----,50,Intimidate,Steadfast
@@ -140,7 +131,6 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Tangela,Grass,-----,65,Chlorophyll,Regenerator
 ,Tangrowth,Grass,-----,100,Chlorophyll,Regenerator
 ,Kangaskhan,Normal,-----,105,Early Bird,Inner Focus
-,Kangaskhan,Normal,-----,105,Parental Bond,-----
 ,Horsea,Water,-----,30,Swift Swim,Damp
 ,Seadra,Water,-----,55,Poison Point,Damp
 ,Kingdra,Water,Dragon,75,Swift Swim,Damp
@@ -152,7 +142,6 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Mr. Mime,Psychic,Fairy,40,Soundproof,Technician
 ,Scyther,Bug,Flying,70,Swarm,Steadfast
 ,Scizor,Bug,Steel,70,Swarm,Light Metal
-,Scizor,Bug,Steel,70,Technician,-----
 ,Smoochum,Ice,Psychic,45,Oblivious,Hydration
 ,Jynx,Ice,Psychic,65,Oblivious,Dry Skin
 ,Elekid,Electric,-----,45,Static,Vital Spirit
@@ -162,21 +151,12 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Magmar,Fire,-----,65,Flame Body,Vital Spirit
 ,Magmortar,Fire,-----,75,Flame Body,Vital Spirit
 ,Pinsir,Bug,-----,65,Hyper Cutter,Moxie
-,Pinsir,Bug,Flying,65,Aerilate,-----
 ,Tauros,Normal,-----,75,Intimidate,Sheer Force
 ,Magikarp,Water,-----,20,Swift Swim,Rattled
 ,Gyarados,Water,Flying,95,Intimidate,Moxie
-,Gyarados,Water,Dark,95,Mold Breaker,-----
 ,Lapras,Water,Ice,130,Water Absorb,Hydration
 ,Ditto,Normal,-----,48,Limber,Imposter
 ,Eevee,Normal,-----,55,Run Away,Anticipation
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
 ,Vaporeon,Water,-----,130,Water Absorb,Hydration
 ,Jolteon,Electric,-----,65,Volt Absorb,Quick Feet
 ,Flareon,Fire,-----,65,Flash Fire,Guts
@@ -193,7 +173,6 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Kabuto,Rock,Water,30,Swift Swim,Weak Armor
 ,Kabutops,Rock,Water,60,Swift Swim,Weak Armor
 ,Aerodactyl,Rock,Flying,80,Rock Head,Unnerve
-,Aerodactyl,Rock,Flying,80,Tough Claws,-----
 ,Munchlax,Normal,-----,135,Pickup,Gluttony
 ,Snorlax,Normal,-----,160,Immunity,Gluttony
 ,Articuno,Ice,Flying,90,Pressure,Snow Cloak
@@ -203,8 +182,6 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Dragonair,Dragon,-----,61,Shed Skin,Marvel Scale
 ,Dragonite,Dragon,Flying,91,Inner Focus,Multiscale
 ,Mewtwo,Psychic,-----,106,Pressure,Unnerve
-,Mewtwo,Psychic,Fighting,106,Steadfast,-----
-,Mewtwo,Psychic,-----,106,Insomnia,-----
 ,Mew,Psychic,-----,100,Synchronize,-----
 ,Chikorita,Grass,-----,45,Overgrow,Leaf Guard
 ,Bayleef,Grass,-----,60,Overgrow,Leaf Guard
@@ -232,7 +209,6 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Xatu,Psychic,Flying,65,Synchronize,Magic Bounce
 ,Mareep,Electric,-----,55,Static,Plus
 ,Flaaffy,Electric,-----,70,Static,Plus
-,Ampharos,Electric,-----,90,Static,Plus
 ,Ampharos,Electric,Dragon,90,Mold Breaker,-----
 ,Azurill,Normal,Fairy,50,Thick Fat,Sap Sipper
 ,Marill,Water,Fairy,70,Thick Fat,Sap Sipper
@@ -268,7 +244,6 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Qwilfish,Water,Poison,65,Poison Point,Intimidate
 ,Shuckle,Bug,Rock,20,Sturdy,Contrary
 ,Heracross,Bug,Fighting,80,Swarm,Moxie
-,Heracross,Bug,Fighting,80,Skill Link,-----
 ,Sneasel,Dark,Ice,55,Inner Focus,Pickpocket
 ,Weavile,Dark,Ice,70,Pressure,Pickpocket
 ,Teddiursa,Normal,-----,60,Pickup,Honey Gather
@@ -283,10 +258,8 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Octillery,Water,-----,75,Suction Cups,Moody
 ,Delibird,Ice,Flying,45,Vital Spirit,Insomnia
 ,Mantyke,Water,Flying,45,Swift Swim,Water Veil
-,Mantine,Water,Flying,65,Swift Swim,Water Veil
 ,Skarmory,Steel,Flying,65,Keen Eye,Weak Armor
 ,Houndour,Dark,Fire,45,Early Bird,Unnerve
-,Houndoom,Dark,Fire,75,Early Bird,Unnerve
 ,Houndoom,Dark,Fire,75,Solar Power,-----
 ,Phanpy,Ground,-----,90,Pickup,Sand Veil
 ,Donphan,Ground,-----,90,Sturdy,Sand Veil
@@ -299,22 +272,18 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Larvitar,Rock,Ground,50,Guts,Sand Veil
 ,Pupitar,Rock,Ground,70,Shed Skin,-----
 ,Tyranitar,Rock,Dark,100,Sand Stream,Unnerve
-,Tyranitar,Rock,Dark,100,Sand Stream,-----
 ,Lugia,Psychic,Flying,106,Pressure,Multiscale
 ,Ho-Oh,Fire,Flying,106,Pressure,Regenerator
 ,Celebi,Psychic,Grass,100,Natural Cure,-----
 ,Treecko,Grass,-----,40,Overgrow,Unburden
 ,Grovyle,Grass,-----,50,Overgrow,Unburden
-,Sceptile,Grass,-----,70,Overgrow,Unburden
 ,Sceptile,Grass,Dragon,70,Lightningrod,-----
 ,Torchic,Fire,-----,45,Blaze,Speed Boost
 ,Combusken,Fire,Fighting,60,Blaze,Speed Boost
 ,Blaziken,Fire,Fighting,80,Blaze,Speed Boost
-,Blaziken,Fire,Fighting,80,Speed Boost,-----
 ,Mudkip,Water,-----,50,Torrent,Damp
 ,Marshtomp,Water,Ground,70,Torrent,Damp
 ,Swampert,Water,Ground,100,Torrent,Damp
-,Swampert,Water,Ground,100,Swift Swim,-----
 ,Poochyena,Dark,-----,35,Run Away,Rattled
 ,Mightyena,Dark,-----,70,Intimidate,Moxie
 ,Zigzagoon,Normal,-----,38,Pickup,Quick Feet
@@ -336,11 +305,8 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Pelipper,Water,Flying,60,Keen Eye,Rain Dish
 ,Ralts,Psychic,Fairy,28,Synchronize,Telepathy
 ,Kirlia,Psychic,Fairy,38,Synchronize,Telepathy
-,,,,,,
 ,Gardevoir,Psychic,Fairy,68,Synchronize,Telepathy
-,Gardevoir,Psychic,Fairy,68,Pixilate,-----
 ,Gallade,Psychic,Fighting,68,Steadfast,Justified
-,Gallade,Psychic,Fighting,68,Inner Focus,-----
 ,Surskit,Bug,Water,40,Swift Swim,Rain Dish
 ,Masquerain,Bug,Flying,70,Intimidate,Unnerve
 ,Shroomish,Grass,-----,60,Effect Spore,Quick Feet
@@ -349,7 +315,6 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Vigoroth,Normal,-----,80,Vital Spirit,-----
 ,Slaking,Normal,-----,150,Truant,-----
 ,Nincada,Bug,Ground,31,Compoundeyes,Run Away
-,,,,,,
 ,Ninjask,Bug,Flying,61,Speed Boost,Infiltrator
 ,Shedinja,Bug,Ghost,1,Wonder Guard,-----
 ,Whismur,Normal,-----,64,Soundproof,Rattled
@@ -362,19 +327,14 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Skitty,Normal,-----,50,Cute Charm,Wonder Skin
 ,Delcatty,Normal,-----,70,Cute Charm,Wonder Skin
 ,Sableye,Dark,Ghost,50,Keen Eye,Prankster
-,Sableye,Dark,Ghost,50,Magic Bounce,-----
 ,Mawile,Steel,Fairy,50,Hyper Cutter,Sheer Force
-,Mawile,Steel,Fairy,50,Huge Power,-----
 ,Aron,Steel,Rock,50,Sturdy,Heavy Metal
 ,Lairon,Steel,Rock,60,Sturdy,Heavy Metal
 ,Aggron,Steel,Rock,70,Sturdy,Heavy Metal
-,Aggron,Steel,-----,70,Filter,-----
 ,Meditite,Fighting,Psychic,30,Pure Power,Telepathy
 ,Medicham,Fighting,Psychic,60,Pure Power,Telepathy
-,Medicham,Fighting,Psychic,60,Pure Power,-----
 ,Electrike,Electric,-----,40,Static,Minus
 ,Manectric,Electric,-----,70,Static,Minus
-,Manectric,Electric,-----,70,Intimidate,-----
 ,Plusle,Electric,-----,60,Plus,Lightningrod
 ,Minun,Electric,-----,60,Minus,Volt Absorb
 ,Volbeat,Bug,-----,65,Illuminate,Prankster
@@ -386,12 +346,9 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Swalot,Poison,-----,100,Liquid Ooze,Gluttony
 ,Carvanha,Water,Dark,45,Rough Skin,Speed Boost
 ,Sharpedo,Water,Dark,70,Rough Skin,Speed Boost
-,Sharpedo,Water,Dark,70,Strong Jaw,-----
-,Wailmer,Water,-----,130,Water Veil,Pressure
 ,Wailord,Water,-----,170,Water Veil,Pressure
 ,Numel,Fire,Ground,60,Oblivious,Own Tempo
 ,Camerupt,Fire,Ground,70,Magma Armor,Anger Point
-,Camerupt,Fire,Ground,70,Sheer Force,-----
 ,Torkoal,Fire,-----,70,White Smoke,Shell Armor
 ,Spoink,Psychic,-----,60,Thick Fat,Gluttony
 ,Grumpig,Psychic,-----,80,Thick Fat,Gluttony
@@ -403,7 +360,6 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Cacturne,Grass,Dark,70,Sand Veil,Water Absorb
 ,Swablu,Normal,Flying,45,Natural Cure,Cloud Nine
 ,Altaria,Dragon,Flying,75,Natural Cure,Cloud Nine
-,Altaria,Dragon,Fairy,75,Pixilate,-----
 ,Zangoose,Normal,-----,73,Immunity,Toxic Boost
 ,Seviper,Poison,-----,73,Shed Skin,Infiltrator
 ,Lunatone,Rock,Psychic,70,Levitate,-----
@@ -419,13 +375,11 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Anorith,Rock,Bug,45,Battle Armor,Swift Swim
 ,Armaldo,Rock,Bug,75,Battle Armor,Swift Swim
 ,Feebas,Water,-----,20,Swift Swim,Adaptability
-,,,,,,
 ,Milotic,Water,-----,95,Marvel Scale,Cute Charm
 ,Castform,Normal,-----,70,Forecast,-----
 ,Kecleon,Normal,-----,60,Color Change,Protean
 ,Shuppet,Ghost,-----,44,Insomnia,Cursed Body
 ,Banette,Ghost,-----,64,Insomnia,Cursed Body
-,Banette,Ghost,-----,64,Prankster,-----
 ,Duskull,Ghost,-----,20,Levitate,Frisk
 ,Dusclops,Ghost,-----,40,Pressure,Frisk
 ,Dusknoir,Ghost,-----,45,Pressure,Frisk
@@ -433,47 +387,33 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Chingling,Psychic,-----,45,Levitate,-----
 ,Chimecho,Psychic,-----,65,Levitate,-----
 ,Absol,Dark,-----,65,Pressure,Justified
-,Absol,Dark,-----,65,Magic Bounce,-----
 ,Snorunt,Ice,-----,50,Inner Focus,Moody
-,,,,,,
-,Glalie,Ice,-----,80,Inner Focus,Moody
 ,Glalie,Ice,-----,80,Refrigerate,-----
 ,Froslass,Ice,Ghost,70,Snow Cloak,Cursed Body
 ,Spheal,Ice,Water,70,Thick Fat,Oblivious
 ,Sealeo,Ice,Water,90,Thick Fat,Oblivious
 ,Walrein,Ice,Water,110,Thick Fat,Oblivious
 ,Clamperl,Water,-----,35,Shell Armor,Rattled
-,,,,,,
 ,Huntail,Water,-----,55,Swift Swim,Water Veil
 ,Gorebyss,Water,-----,55,Swift Swim,Hydration
 ,Relicanth,Water,Rock,100,Swift Swim,Sturdy
 ,Luvdisc,Water,-----,43,Swift Swim,Hydration
 ,Bagon,Dragon,-----,45,Rock Head,Sheer Force
 ,Shelgon,Dragon,-----,65,Rock Head,Overcoat
-,Salamence,Dragon,Flying,95,Intimidate,Moxie
 ,Salamence,Dragon,Flying,95,Aerilate,-----
 ,Beldum,Steel,Psychic,40,Clear Body,Light Metal
 ,Metang,Steel,Psychic,60,Clear Body,Light Metal
 ,Metagross,Steel,Psychic,80,Clear Body,Light Metal
-,Metagross,Steel,Psychic,80,Tough Claws,-----
 ,Regirock,Rock,-----,80,Clear Body,Sturdy
 ,Regice,Ice,-----,80,Clear Body,Ice Body
 ,Registeel,Steel,-----,80,Clear Body,Light Metal
 ,Latias,Dragon,Psychic,80,Levitate,-----
-,Latias,Dragon,Psychic,80,Levitate,-----
 ,Latios,Dragon,Psychic,80,Levitate,-----
-,Latios,Dragon,Psychic,80,Levitate,-----
-,Kyogre,Water,-----,100,Drizzle,-----
 ,Kyogre,Water,-----,100,Primordial Sea,-----
-,Groudon,Ground,-----,100,Drought,-----
 ,Groudon,Ground,Fire,100,Desolate Land,-----
-,Rayquaza,Dragon,Flying,105,Air Lock,-----
 ,Rayquaza,Dragon,Flying,105,Delta Stream,-----
 ,Jirachi,Steel,Psychic,100,Serene Grace,-----
-,Deoxys,Psychic,-----,50,Pressure,-----
-,,,,50,,
-,,,,50,,
-,,,,50,,
+,Deoxys,Psychic,-----,50,Pressure,----
 ,Turtwig,Grass,-----,55,Overgrow,Shell Armor
 ,Grotle,Grass,-----,75,Overgrow,Shell Armor
 ,Torterra,Grass,Ground,95,Overgrow,Shell Armor
@@ -498,11 +438,7 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Shieldon,Rock,Steel,30,Sturdy,Soundproof
 ,Bastiodon,Rock,Steel,60,Sturdy,Soundproof
 ,Burmy,Bug,-----,40,Shed Skin,Overcoat
-,,,,,,
-,,,,,,
 ,Wormadam,Bug,Grass,60,Anticipation,Overcoat
-,,,Ground,60,,
-,,,Steel,60,,
 ,Mothim,Bug,Flying,70,Swarm,Tinted Lens
 ,Combee,Bug,Flying,30,Honey Gather,Hustle
 ,Vespiquen,Bug,Flying,70,Pressure,Unnerve
@@ -516,7 +452,6 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Drifloon,Ghost,Flying,90,Aftermath,Flare Boost
 ,Drifblim,Ghost,Flying,150,Aftermath,Flare Boost
 ,Buneary,Normal,-----,55,Run Away,Limber
-,Lopunny,Normal,-----,65,Cute Charm,Limber
 ,Lopunny,Normal,Fighting,65,Scrappy,-----
 ,Glameow,Normal,-----,49,Limber,Keen Eye
 ,Purugly,Normal,-----,71,Thick Fat,Defiant
@@ -529,10 +464,8 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Gible,Dragon,Ground,58,Sand Veil,Rough Skin
 ,Gabite,Dragon,Ground,68,Sand Veil,Rough Skin
 ,Garchomp,Dragon,Ground,108,Sand Veil,Rough Skin
-,Garchomp,Dragon,Ground,108,Sand Force,-----
 ,Riolu,Fighting,-----,40,Steadfast,Prankster
 ,Lucario,Fighting,Steel,70,Steadfast,Justified
-,Lucario,Fighting,Steel,70,Adaptability,-----
 ,Hippopotas,Ground,-----,68,Sandstream,Sand Force
 ,Hippowdon,Ground,-----,108,Sandstream,Sand Force
 ,Skorupi,Poison,Bug,40,Battle Armor,Keen Eye
@@ -544,13 +477,7 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Lumineon,Water,-----,69,Swift Swim,Water Veil
 ,Snover,Grass,Ice,60,Snow Warning,Soundproof
 ,Abomasnow,Grass,Ice,90,Snow Warning,Soundproof
-,Abomasnow,Grass,Ice,90,Snow Warning,-----
 ,Rotom,Electric,Ghost,50,Levitate,-----
-,,,Ice,50,,
-,,,Fire,,,
-,,,Flying,,,
-,,,Grass,,,
-,,,Water,,,
 ,Uxie,Psychic,-----,75,Levitate,-----
 ,Mesprit,Psychic,-----,80,Levitate,-----
 ,Azelf,Psychic,-----,75,Levitate,-----
@@ -559,13 +486,11 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Heatran,Fire,Steel,91,Flash Fire,Flame Body
 ,Regigigas,Normal,-----,110,Slow Start,-----
 ,Giratina,Ghost,Dragon,150,Pressure,Telepathy
-,,,,150,Levitate,
 ,Cresselia,Psychic,-----,120,Levitate,-----
 ,Phione,Water,-----,80,Hydration,-----
 ,Manaphy,Water,-----,100,Hydration,-----
 ,Darkrai,Dark,-----,70,Bad Dreams,-----
-,Shaymin,Grass,-----,100,Natural Cure,-----
-,,Grass,Flying,100,Serene Grace,
+,Shaymin,Grass,-----,100,Natural Cure,Serene Grace
 ,Arceus,Normal,-----,120,Multitype,-----
 ,Victini,Psychic,Fire,100,Victory Star,-----
 ,Snivy,Grass,-----,45,Overgrow,Contrary
@@ -605,7 +530,6 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Drilbur,Ground,-----,60,Sand Rush,Mold Breaker
 ,Excadrill,Ground,Steel,110,Sand Rush,Mold Breaker
 ,Audino,Normal,-----,103,Healer,Klutz
-,Audino,Normal,Fairy,103,Healer,-----
 ,Timburr,Fighting,-----,75,Guts,Iron Fist
 ,Gurdurr,Fighting,-----,85,Guts,Iron Fist
 ,Conkeldurr,Fighting,-----,105,Guts,Iron Fist
@@ -625,7 +549,6 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Petilil,Grass,-----,45,Chlorophyll,Leaf Guard
 ,Lilligant,Grass,-----,70,Chlorophyll,Leaf Guard
 ,Basculin,Water,-----,70,Reckless,Mold Breaker
-,,,,,Rock Head,
 ,Sandile,Ground,Dark,50,Intimidate,Anger Point
 ,Krokorok,Ground,Dark,60,Intimidate,Anger Point
 ,Krookodile,Ground,Dark,95,Intimidate,Anger Point
@@ -717,19 +640,13 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Terrakion,Rock,Fighting,91,Justified,-----
 ,Virizion,Grass,Fighting,91,Justified,-----
 ,Tornadus,Flying,-----,79,Prankster,Defiant
-,,,,79,Regenerator,
-,Thundurus,Electric,Flying,79,Prankster,Defiant
-,,,,79,Volt Absorb,
+,Thundurus,Electric,Flying,79,Volt,Absorb
 ,Reshiram,Dragon,Fire,100,Turboblaze,-----
 ,Zekrom,Dragon,Electric,100,Teravolt,-----
 ,Landorus,Ground,Flying,89,Sand Force,Sheer Force
-,,,,89,Intimidate,
-,Kyurem,Dragon,Ice,125,Pressure,-----
-,,,,125,Teravolt,
-,,,,125,Turboblaze,
+,Kyurem,Dragon,Ice,125,Pressure,Turboblaze
 ,Keldeo,Water,Fighting,91,Justified,-----
 ,Meloetta,Normal,Psychic,100,Serene Grace,-----
-,,Normal,Fighting,100,,
 ,Genesect,Bug,Steel,71,Download,-----
 ,Chespin,Grass,-----,56,Overgrow,Bulletproof
 ,Quilladin,Grass,-----,61,Overgrow,Bulletproof
@@ -760,11 +677,9 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Furfrou,Normal,-----,75,Fur Coat,-----
 ,Espurr,Psychic,-----,62,Keen Eye,Own Tempo
 ,Meowstic,Psychic,-----,74,Keen Eye,Prankster
-,,,,,,Competitive
 ,Honedge,Steel,Ghost,45,No Guard,-----
 ,Doublade,Steel,Ghost,59,No Guard,-----
 ,Aegislash,Steel,Ghost,60,Stance Change,-----
-,,,,60,,
 ,Spritzee,Fairy,-----,78,Healer,Aroma Veil
 ,Aromatisse,Fairy,-----,101,Healer,Aroma Veil
 ,Swirlix,Fairy,-----,62,Sweet Veil,Unburden
@@ -792,14 +707,8 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Klefki,Steel,Fairy,57,Prankster,Magician
 ,Phantump,Ghost,Grass,43,Natural Cure,Harvest
 ,Trevenant,Ghost,Grass,85,Natural Cure,Harvest
-,Pumpkaboo,Ghost,Grass,44,Pickup,Insomnia
-,,,,49,,
-,,,,54,,
-,,,,59,,
-,Gourgeist,Ghost,Grass,55,Pickup,Insomnia
-,,,,65,,
-,,,,75,,
-,,,,85,,
+,Pumpkaboo,Ghost,Grass,59,Pickup,Insomnia
+,Gourgeist,Ghost,Grass,85,Pickup,Insomnia
 ,Bergmite,Ice,-----,55,Own Tempo,Sturdy
 ,Avalugg,Ice,-----,95,Own Tempo,Sturdy
 ,Noibat,Flying,Dragon,40,Frisk,Telepathy
@@ -807,7 +716,6 @@ id int,name,type 1,type 2,health,base attack,special attack
 ,Xerneas,Fairy,-----,126,Fairy Aura,-----
 ,Yveltal,Dark,Flying,126,Dark Aura,-----
 ,Zygarde,Dragon,Ground,108,Aura Break,-----
-,Diancie,Rock,Fairy,50,Clear Body,-----
 ,Diancie,Rock,Fairy,50,Magic Bounce,-----
 ,Hoopa,Psychic,Ghost,80,Magician,-----
 ,Volcanion,Fire,Water,80,Water Absorb,-----
