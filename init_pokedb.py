@@ -23,7 +23,7 @@ exec_string[0] = 'create table location_records = (
     route_9 integer default 0, 
     route_10 integer default 0, 
     route_11 integer default 0, 
-    route_12 integer default, 
+    route_12 integer default 0, 
     route_13 integer default 0, 
     route_14 integer default 0, 
     route_15 integer default 0, 
@@ -87,8 +87,10 @@ exec_string[3] = 'create table attacks (name text primary key,
     damage integer, 
     effect text, 
     targets text, 
-    location_record_id integer,
-    foreign key (location_record_id) references location_records(id)
+    power_points integer,
+    accuracy integer,
+    location_name text not null,
+    foreign key (location_name) references locations(name)
     );'
 
 exec_string[4] = 'create table locations (name text primary key, 
