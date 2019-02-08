@@ -19,64 +19,9 @@ executor = con.cursor()
 exec_string = []
 
 exec_string.append( "create table location_records (" +
-    "id integer primary key, " +
-    "route_1 integer default 0, "+ 
-    "route_2 integer default 0, "+ 
-    "route_3 integer default 0, "+ 
-    "route_4 integer default 0, "+ 
-    "route_5 integer default 0, "+ 
-    "route_6 integer default 0, "+ 
-    "route_7 integer default 0, "+ 
-    "route_8 integer default 0, "+ 
-    'route_9 integer default 0, '+ 
-    "route_10 integer default 0, "+ 
-    "route_11 integer default 0, "+ 
-    "route_12 integer default 0, "+ 
-    'route_13 integer default 0, '+ 
-    'route_14 integer default 0, '+ 
-    'route_15 integer default 0, '+ 
-    'route_16 integer default 0, '+ 
-    'route_17 integer default 0, '+ 
-    'route_18 integer default 0, '+ 
-    'route_19 integer default 0, '+ 
-    'route_20 integer default 0, '+ 
-    'route_21 integer default 0, '+ 
-    'route_22 integer default 0, '+ 
-    'route_23 integer default 0, '+ 
-    'route_24 integer default 0, '+ 
-    'lumiose integer default 0, '+ 
-    'santalune_forest integer default 0, '+ 
-    'friend_safari_bug integer default 0, '+ 
-    'friend_safari_flying integer default 0, '+ 
-    'evolved integer default 0, '+ 
-    'parent_poke_lvl integer, '+ 
-    'parent_poke_name text, '+ 
-    'friend_safari_electric integer default 0, '+ 
-    'bred integer default 0, '+ 
-    'terminus_cave integer default 0, '+ 
-    'friend_safari_fairy integer default 0, '+ 
-    'item_used text, '+ 
-    'pokemon_village integer default 0, '+ 
-    'connecting_cave integer default 0, '+ 
-    'friend_safari_grass integer default 0, '+ 
-    'friend_safari_fighting integer default 0, '+ 
-    'glittering_cave integer default 0, '+ 
-    'friend_safari_fire integer default 0, '+ 
-    'ambrette_town integer default 0, '+ 
-    'azure_bay integer default 0, '+ 
-    'cyllage_village integer default 0, '+ 
-    'trade integer default 0, '+ 
-    'friend_safari_ice integer default 0, '+ 
-    'lost_hotel integer default 0, '+ 
-    'friend_safari integer default 0, '+ 
-    'frost_cavern integer default 0, '+ 
-    'friend_safari_ground integer default 0, '+  
-    'parfum_palace integer default 0, '+
-    'reflection_cave integer default 0,'+
-    'friend_safari_rock integer default 0, '+
-    'friend_safari_dark integer deafult 0,'+
-    'shalour_city integer default 0,'+
-    'tower_of_mastery integer default 0);')
+    "id integer primary key, " +'location_name_1 text not null, location_name_2 text not null, location_name_3 text not null, location_4 text not null, location_5 text not null, location_6 text not null,' + 
+    'pokemon_name text not null, ' + 'evolved int not null default 0, '+
+    'evolved_from text, ' + 'evolution_level integer );')
 
 
 exec_string.append("""create table pokemon (name text primary key, 
