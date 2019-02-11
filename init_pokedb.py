@@ -18,39 +18,27 @@ executor = con.cursor()
 
 exec_string = []
 
-exec_string.append( "create table location_records_no_fk (" +
-    "id integer primary key, " +'location_name_1 text not null, location_name_2 text not null, location_name_3 text not null, location_4 text not null, location_5 text not null, location_6 text not null,' + 
-    'pokemon_name text not null, ' + 'evolved int not null default 0, '+
-    'evolved_from text, ' + 'evolution_level integer );')
+exec_string.append("create table locations (name text primary key, " +
+    "description text, "+
+    "north_exit text, "+
+    "east_exit text, "+
+    "south_exit text, "+
+    "west_exit text, "+
+    "foreign key(north_exit) references locations(name),"+
+    "foreign key(east_exit) references locations(name),"+
+    "foreign key(south_exit) references locations(name),"+
+    "foreign key(west_exit) references locations(name)"+
+    ");")
 
-
-exec_string.append("""create table pokemon_no_fk (name text primary key, 
-    hp integer not null, 
-    location_record_id integer, 
-    type1 text not null, 
-    type2 text);"""
-)
-exec_string.append("""create table locations (name text primary key, 
-    description text, 
-    north_exit text, 
-    east_exit text, 
-    south_exit text, 
-    west_exit text, 
-    foreign key(north_exit) references locations(name),
-    foreign key(east_exit) references locations(name),
-    foreign key(south_exit) references locations(name),
-    foreign key(west_exit) references locations(name)
-    );""")
-
-exec_string.append( """create table attacks (name text primary key, 
-    damage integer, 
-    effect text, 
-    targets text, 
-    power_points integer,
-    accuracy integer,
-    location_name text not null,
-    foreign key (location_name) references locations(name)
-    );""")
+exec_string.append( "create table attacks (name text primary key, " +
+    "damage integer, " +
+    "effect text, " +
+    "targets text, " +
+    "power_points integer, "+
+    "accuracy integer, "+
+    "location_name text not null, "+
+    "foreign key (location_name) references locations(name)" +
+    ");")
 
 exec_string.append("create table pokemon (" +
         "name text primary key," + 
@@ -73,19 +61,16 @@ exec_string.append("create table location_records(" +
     'foreign key(location_6) references locations(name),' +
     'foreign key(pokemon_name) references pokemon(name));')
 
-exec_string.append('drop table location_records_no_fk;')
-exec_string.append('drop table pokemon_no_fk;')
-
-
-
 for i in exec_string:
+    print("EXECUTING:")
     print(i)
     executor.execute(i)
-    executor.execute("select * from sqlite_master")
-    out = executor.fetchall()
-    print("output:")
-    for o in out:
-        print(o)
+
+executor.execute("select * from sqlite_master where type = 'table' order by name;")
+out = executor.fetchall()
+print("ALL TABLES:")
+for o in out:
+    print(o)
 
 con.commit()
 
@@ -93,9 +78,20 @@ con.commit()
 
 #executor.execute('select * from sqlite_master where type="table";')
 
-table_name_verify = executor.fetchall()
-for table_name in table_name_verify:
-    print(table_name)
+
+#import data from csv files
+#import attack datas
+print("\n\n IMPORTING DATA")
+for record in locationreader:
+    if record[0] != "name":
+        sqlstring = "insert into locations (name, description) values (" + record[0] + "," + record[1] + ");"
+    print("executing " + sqlstring)
+    executor.execute(sqlstring)
+    print("output: ")
+    outs = executor.fetchall()
+    for o in outs:
+        print(o)
+
 
 executor.close()
 con.close()
