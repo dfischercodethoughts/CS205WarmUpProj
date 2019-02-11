@@ -1,6 +1,11 @@
 # CS205WarmUpProj
 Team Neutral FTW
 
+Tasks to be completed:
+    - Decide what data user should be able to look at
+    - Write the function that takes the user input and validates it
+    - Function which executes the user input and converts it to SQL query
+    - Potentially format the output of the Tables
 
 Hey guys, we should at the least have a decent run through of how our program works here.
 

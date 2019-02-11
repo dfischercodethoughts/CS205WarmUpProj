@@ -94,4 +94,7 @@ for record in locationreader:
 
 
 executor.close()
+
 con.close()
+
+
