@@ -1,4 +1,4 @@
-code to read in .csv files and init sqlite3 db
+#code to read in .csv files and init sqlite3 db
 import csv
 import sqlite3
 
@@ -94,8 +94,7 @@ for record in locationreader:
 
 
 executor.close()
-<<<<<<< HEAD
+
 con.close()
-=======
-con.close()
->>>>>>> 7f042b38be5955b3cf8cdd86b32779b90560cf0f
+
+
