@@ -98,4 +98,8 @@ for table_name in table_name_verify:
     print(table_name)
 
 executor.close()
+<<<<<<< HEAD
 con.close()
+=======
+con.close()
+>>>>>>> 7f042b38be5955b3cf8cdd86b32779b90560cf0f
