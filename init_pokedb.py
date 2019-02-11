@@ -54,8 +54,7 @@ exec_string.append( """create table attacks (name text primary key,
     foreign key (location_name) references locations(name)
     );""")
 
-exec_string.append( """modify table pokemon(
-    foreign key (primary_attack) references attacks(name),
+exec_string.append( """alter table pokemon add primary_attack foreign key (primary_attack) references attacks(name),
     foreign key (secondary_attack) references attacks(name),
     foreign key (location_record_id) references location_records(id)
     );""")
