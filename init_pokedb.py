@@ -109,18 +109,16 @@ def insert_location_references(csv_file,con,columns):
             sqlstring +=" (" + columns + ") values ("
             
             for i in record:
-                if i != "FALSE" and i != "yes" and i != "no" and i != "use" and i != "bred" and i != "trade" and i != "NA":
+                if i!="" and i != "FALSE" and i != "yes" and i != "no" and i != "use" and i != "bred" and i != "trade" and i != "NA":
                     sqlstring += "'" + i.replace("'","").replace('"',"") + "',"
                 elif i == "no":
                     sqlstring += "0,"
                 elif i == "yes":
                     sqlstring += "1,"
                 else:
-                    sqlstring += ","
-            if sqlstring[-2] == "'":
-                sqlstring = sqlstring[:-2]
-            else:
-                sqlstring=sqlstring[:-1]
+                    sqlstring += "null,"
+
+            sqlstring = sqlstring[:-1]
 
             sqlstring += ");"
         
@@ -212,12 +210,13 @@ exec_string.append("create table pokemon (" +
 exec_string.append("create table location_reference(" + 
     "id integer primary key, \n" +"location_1 text not null,\n location_2 text not null,\n " +
     'location_3 text not null,\n location_4 text not null, \nlocation_5 text not null,\n location_6 text not null,\n' + 
-    'pokemon_name text not null, \n' + 'evolved int not null default 0, \n'+
-    'evolved_from text, \n' + 'evolution_level integer,\n' + 'foreign key(location_1) references locations(name),\n'  + 
+    'pokemon_name text not null, \n' + 'evolved int not null default 0, \n'+'bred integer not null default 0, \n' + 'item_used integer not null default 0, \n'+
+    'parent_pokemon text, \n' + 'evolution_level integer,\n' + 'foreign key(location_1) references locations(name),\n'  + 
     'foreign key(location_2) references locations(name),\n' + 'foreign key(location_3) references locations(name),\n'  + 
     'foreign key(location_4) references locations(name),\n'  + 'foreign key(location_5) references locations(name),\n'  + 
     'foreign key(location_6) references locations(name),\n' +
-    'foreign key(pokemon_name) references pokemon(name));\n')
+    'foreign key(pokemon_name) references pokemon(name),\n' +
+    'foreign key(parent_pokemon) references pokemon(name));' )
 
 print("CREATING TABLES \n")
 for i in exec_string:
@@ -259,6 +258,7 @@ print("\n\n IMPORTING DATA")
 insert_locations(locationreader,con,'name,description')
 insert_attacks(attackreader,con,'name,damage,effect,targets,power_points,accuracy,location_name')
 insert_pokemon(pokereader,con,'name,type1,type2,hp,primary_attack,secondary_attack')
+insert_location_references(locationrefreader,con,'pokemon_name,location_1,location_2,location_3,location_4,location_5,location_6,bred,item_used,parent_pokemon,evolution_level,evolved')
 
 con.close()
 
