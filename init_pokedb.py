@@ -23,6 +23,36 @@ def execute_sql(sql_str, con):
 
     return None
 
+def insert_locations(csv_file,con,columns):
+#csv file is file opened with pythons built in csv file handler
+#con is sqlite3 db connection
+#table name is a string containing the table name
+    table_name = 'locations'
+    for record in csv_file:
+        if record[0] != "name":
+            
+            if record[1] != "":
+                sqlstring = "insert into " + table_name
+                sqlstring +=" (" + columns + ") values ('"
+                for i in record:
+                    if i != "--" and i != "----":
+                        sqlstring += i
+                        sqlstring += "','"
+                    else:
+                        sqlstring += "','"
+                sqlstring = sqlstring[:-2]
+                sqlstring += ");"
+            else:
+                sqlstring = "insert into locations (name) values ('" + record[0] + "');"
+        
+            print("executing " + sqlstring)
+            outs = execute_sql(sqlstring,con)
+            print("output: ")
+            if outs != None:
+                for o in outs:
+                    print(o)
+
+
 con = open_db('pokedb.db')
 
 exec_string = []
@@ -107,20 +137,7 @@ locationrefreader = csv.reader(open(local_reference_csv))
 
 
 print("\n\n IMPORTING DATA")
-for record in locationreader:
-        if record[0] != "name":
-            if record[1] != "":
-                sqlstring = "insert into locations (name, description) values ('" + record[0] + "','" + record[1] + "');"
-            else:
-                sqlstring = "insert into locations (name) values ('" + record[0] + "');"
-
-        print("executing " + sqlstring)
-        outs = execute_sql(sqlstring,con)
-        print("output: ")
-        if outs != None:
-            for o in outs:
-                print(o)
-
+insert_locations(location_reader,con,'name,description')
 con.close()
 
 
