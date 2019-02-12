@@ -27,52 +27,58 @@ con = open_db('pokedb.db')
 
 exec_string = []
 
-exec_string.append("create table locations (name text primary key, " +
-    "description text, "+
-    "north_exit text, "+
-    "east_exit text, "+
-    "south_exit text, "+
-    "west_exit text, "+
-    "foreign key(north_exit) references locations(name),"+
-    "foreign key(east_exit) references locations(name),"+
-    "foreign key(south_exit) references locations(name),"+
+exec_string.append("create table locations (name text primary key,\n " +
+    "description text, \n"+
+    "north_exit text, \n"+
+    "east_exit text, \n"+
+    "south_exit text, \n"+
+    "west_exit text, \n"+
+    "foreign key(north_exit) references locations(name),\n"+
+    "foreign key(east_exit) references locations(name),\n"+
+    "foreign key(south_exit) references locations(name),\n"+
     "foreign key(west_exit) references locations(name)"+
     ");")
 
-exec_string.append( "create table attacks (name text primary key, " +
-    "damage integer, " +
-    "effect text, " +
-    "targets text, " +
-    "power_points integer, "+
-    "accuracy integer, "+
-    "location_name text not null, "+
+exec_string.append( "create table attacks (name text primary key, \n" +
+    "damage integer, \n" +
+    "effect text, \n" +
+    "targets text, \n" +
+    "power_points integer, \n"+
+    "accuracy integer, \n"+
+    "location_name text not null, \n"+
     "foreign key (location_name) references locations(name)" +
     ");")
 
 exec_string.append("create table pokemon (" +
-        "name text primary key," + 
-    "hp integer not null, " +
-   " type1 text not null, " +
-    "type2 text," +
-    "primary_attack text," + 
-    "secondary_attack text," +
-    "location_record_id integer," +
-    "foreign key(primary_attack) references attacks(name)," +
-    "foreign key(secondary_attack) references attacks(name)," +
+        "name text primary key,\n" + 
+    "hp integer not null, \n" +
+   " type1 text not null, \n" +
+    "type2 text,\n" +
+    "primary_attack text,\n" + 
+    "secondary_attack text,\n" +
+    "location_record_id integer,\n" +
+    "foreign key(primary_attack) references attacks(name),\n" +
+    "foreign key(secondary_attack) references attacks(name),\n" +
     "foreign key(location_record_id) references locations(name));")
 
 exec_string.append("create table location_records(" + 
-    "id integer primary key, " +'location_1 text not null, location_2 text not null, location_3 text not null, location_4 text not null, location_5 text not null, location_6 text not null,' + 
-    'pokemon_name text not null, ' + 'evolved int not null default 0, '+
-    'evolved_from text, ' + 'evolution_level integer,' + 'foreign key(location_1) references locations(name),'  + 
-    'foreign key(location_2) references locations(name),' + 'foreign key(location_3) references locations(name),'  + 
-    'foreign key(location_4) references locations(name),'  + 'foreign key(location_5) references locations(name),'  + 
-    'foreign key(location_6) references locations(name),' +
-    'foreign key(pokemon_name) references pokemon(name));')
+    "id integer primary key, \n" +'location_1 text not null,\n location_2 text not null,\n location_3 text not null,\n location_4 text not null, \nlocation_5 text not null,\n location_6 text not null,\n' + 
+    'pokemon_name text not null, \n' + 'evolved int not null default 0, \n'+
+    'evolved_from text, \n' + 'evolution_level integer,\n' + 'foreign key(location_1) references locations(name),\n'  + 
+    'foreign key(location_2) references locations(name),\n' + 'foreign key(location_3) references locations(name),\n'  + 
+    'foreign key(location_4) references locations(name),\n'  + 'foreign key(location_5) references locations(name),\n'  + 
+    'foreign key(location_6) references locations(name),\n' +
+    'foreign key(pokemon_name) references pokemon(name));\n')
 
 print("CREATING TABLES \n")
 for i in exec_string:
-    execute_sql(i,con)
+    print("\nexecuting: " + i)
+    out = execute_sql(i,con)
+    print("output: \n")
+    if out != None:
+        for o in out:
+            print(o)
+    print("next statement")
     
 out = execute_sql("select * from sqlite_master where type = 'table' order by name;",con)
 
@@ -102,17 +108,18 @@ locationrefreader = csv.reader(open(local_reference_csv))
 
 print("\n\n IMPORTING DATA")
 for record in locationreader:
-    if record[0] != "name":
-        sqlstring = "insert into locations (name, description) values (" + record[0] + "," + record[1] + ");"
-    print("executing " + sqlstring)
-    executor.execute(sqlstring)
-    print("output: ")
-    outs = executor.fetchall()
-    for o in outs:
-        print(o)
+        if record[0] != "name":
+            if record[1] != "":
+                sqlstring = "insert into locations (name, description) values ('" + record[0] + "','" + record[1] + "');"
+            else:
+                sqlstring = "insert into locations (name) values ('" + record[0] + "');"
 
-
-executor.close()
+        print("executing " + sqlstring)
+        outs = execute_sql(sqlstring,con)
+        print("output: ")
+        if outs != None:
+            for o in outs:
+                print(o)
 
 con.close()
 
