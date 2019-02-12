@@ -2,19 +2,28 @@
 import csv
 import sqlite3
 
-poke_csv = "poke_import.csv"
-attacks_csv = "attacks_import.csv"
-locations_csv = "location_import.csv"
-local_reference_csv = "location_reference.csv"
+def open_db(db_name):
+    try:
+        con = sqlite3.connect(db_name)
+        return con
+    except Exception as e:
+        print(e)
 
-pokereader = csv.reader(open(poke_csv))
-attackreader = csv.reader(open(attacks_csv))
-locationreader = csv.reader(open(locations_csv))
-locationrefreader = csv.reader(open(local_reference_csv))
+    return None
 
-con = sqlite3.connect('pokedb.db')
+def execute_sql(sql_str, con):
+    cur = con.cursor()
+    try:
+        cur.execute(sql_str)
+        out = cur.fetchall()
+        con.commit()
+        return out
+    except Exception as e:
+        print(e)
 
-executor = con.cursor()
+    return None
+
+con = open_db('pokedb.db')
 
 exec_string = []
 
@@ -61,14 +70,13 @@ exec_string.append("create table location_records(" +
     'foreign key(location_6) references locations(name),' +
     'foreign key(pokemon_name) references pokemon(name));')
 
+print("CREATING TABLES \n")
 for i in exec_string:
-    print("EXECUTING:")
-    print(i)
-    executor.execute(i)
+    execute_sql(i,con)
+    
+out = execute_sql("select * from sqlite_master where type = 'table' order by name;",con)
 
-executor.execute("select * from sqlite_master where type = 'table' order by name;")
-out = executor.fetchall()
-print("ALL TABLES:")
+print("\n\nRESULTANT TABLES:")
 for o in out:
     print(o)
 
@@ -81,6 +89,17 @@ con.commit()
 
 #import data from csv files
 #import attack datas
+
+poke_csv = "poke_import.csv"
+attacks_csv = "attacks_import.csv"
+locations_csv = "location_import.csv"
+local_reference_csv = "location_reference.csv"
+pokereader = csv.reader(open(poke_csv))
+attackreader = csv.reader(open(attacks_csv))
+locationreader = csv.reader(open(locations_csv))
+locationrefreader = csv.reader(open(local_reference_csv))
+
+
 print("\n\n IMPORTING DATA")
 for record in locationreader:
     if record[0] != "name":
