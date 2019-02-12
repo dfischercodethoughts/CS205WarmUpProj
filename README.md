@@ -15,32 +15,49 @@ i.e. expect user input:
 pokemon *type*
 
 
-So, from what I can tell of our conversation last week, we want our tables to be:
-POKEMON
-  name
-  trainer
-  foreignKey attacks (one to many)
-  foreignKey regions (one to one)
-  type
-  health
-  
-ATTACKS
-  name
-  type
-  damage
-  
-REGIONS
-  etcetc
-  
-TYPE
-  fire
-  water
-  earth
-  lightning
-  poison
-  psy
-  air
-  ??mud?
+DF 2-12:
+All right, so tables are all set up. note that location_reference.csv is incomplete (I did the first 120 records or so though).
+also, locations.csv contains a null record and an incomplete record, one of which indicates we haven't set up that pokemon's location reference, and one of which indicates that location slot is null
+
+LOCATIONS:
+PK name txt,
+description txt,
+FK (LOCATIONS.name) north_exit,
+FK (LOCATIONS.name) east_exit,
+FK (LOCATIONS.name) south_exit,
+FK (LOCATIONS.name) west_exit
+
+ATTACKS:
+pk name txt,
+damage int,
+effect txt,
+targets txt,
+power_points int,
+accuracy int,
+FK (LOCATIONS.name) location_name
+
+POKEMON:
+pk name txt,
+hp int (not null),
+type1 txt (not null),
+type2 txt,
+FK (ATTACKS.name) primary_attack txt,
+FK (ATTACKS.name) secondary_attack txt
+
+LOCATION REFERENCE:
+pk id int (autoinc),
+FK (LOCATIONS.name) location_1 txt,
+FK (LOCATIONS.name) location_2 txt,
+FK (LOCATIONS.name) location_3 txt,
+FK (LOCATIONS.name) location_4 txt,
+FK (LOCATIONS.name) location_5 txt,
+FK (LOCATIONS.name) location_6 txt,
+FK (POKEMON.name) pokemon_name txt,
+evolved int default 0,
+bred int default 0,
+item_used default 0,
+FK (POKEMON.name) parent_pokemon txt,
+evolution_level int
   
   Git with a Group Commands
 
