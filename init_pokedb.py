@@ -28,18 +28,20 @@ def insert_locations(csv_file,con,columns):
 #con is sqlite3 db connection
 #table name is a string containing the table name
     table_name = 'locations'
+    count = 0
     for record in csv_file:
-        if record[0] != "name":
+        if record[0] != "name" and count != 0:
             
             if record[1] != "":
                 sqlstring = "insert into " + table_name
                 sqlstring +=" (" + columns + ") values ('"
                 for i in record:
-                    if i != "--" and i != "----":
+                    if i != "--" and i != "----" and i != "":
                         sqlstring += i
                         sqlstring += "','"
-                    else:
-                        sqlstring += "','"
+                    #for building location db, we just want to insert location name and description (other cols ommitted)
+                    #else:
+                        #sqlstring += "','"
                 sqlstring = sqlstring[:-2]
                 sqlstring += ");"
             else:
@@ -51,7 +53,8 @@ def insert_locations(csv_file,con,columns):
             if outs != None:
                 for o in outs:
                     print(o)
-
+        else:
+            count = 1
 
 con = open_db('pokedb.db')
 
@@ -137,7 +140,7 @@ locationrefreader = csv.reader(open(local_reference_csv))
 
 
 print("\n\n IMPORTING DATA")
-insert_locations(location_reader,con,'name,description')
+insert_locations(locationreader,con,'name,description')
 con.close()
 
 
