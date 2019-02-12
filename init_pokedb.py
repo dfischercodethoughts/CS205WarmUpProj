@@ -2,6 +2,13 @@
 import csv
 import sqlite3
 
+def is_number(in_str):
+    try:
+        int(in_str)
+        return True
+    except ValueError: 
+        return False
+
 def open_db(db_name):
     try:
         con = sqlite3.connect(db_name)
@@ -56,6 +63,115 @@ def insert_locations(csv_file,con,columns):
         else:
             count = 1
 
+def insert_attacks(csv_file,con,columns):
+#csv file is file opened with pythons built in csv file handler
+#con is sqlite3 db connection
+#table name is a string containing the table name
+    table_name = 'attacks'
+    count = 0
+    for record in csv_file:
+        if record[0] != "name" and count != 0:
+            
+            
+            sqlstring = "insert into " + table_name
+            sqlstring +=" (" + columns + ") values ('"
+            for i in record:
+                if i != "--" and i != "----" and i != "":
+                    sqlstring += i.replace("'","").replace('"',"")
+                    sqlstring += "','"
+                #for building location db, we just want to insert location name and description (other cols ommitted)
+                else:
+                    sqlstring += "','"
+            sqlstring = sqlstring[:-2]
+            sqlstring += ");"
+        
+            print("executing " + sqlstring)
+            outs = execute_sql(sqlstring,con)
+            print("output: ")
+            if outs != None:
+                for o in outs:
+                    print(o)
+        else:
+            count = 1
+
+
+def insert_location_references(csv_file,con,columns):
+#csv file is file opened with pythons built in csv file handler
+#con is sqlite3 db connection
+#table name is a string containing the table name
+    table_name = 'location_reference'
+    count = 0
+    for record in csv_file:
+        if record[0] != "name" and count != 0:
+            
+            
+            sqlstring = "insert into " + table_name
+            sqlstring +=" (" + columns + ") values ("
+            
+            for i in record:
+                if i != "FALSE" and i != "yes" and i != "no" and i != "use" and i != "bred" and i != "trade" and i != "NA":
+                    sqlstring += "'" + i.replace("'","").replace('"',"") + "',"
+                elif i == "no":
+                    sqlstring += "0,"
+                elif i == "yes":
+                    sqlstring += "1,"
+                else:
+                    sqlstring += ","
+            if sqlstring[-2] == "'":
+                sqlstring = sqlstring[:-2]
+            else:
+                sqlstring=sqlstring[:-1]
+
+            sqlstring += ");"
+        
+            print("executing " + sqlstring)
+            outs = execute_sql(sqlstring,con)
+            print("output: ")
+            if outs != None:
+                for o in outs:
+                    print(o)
+        else:
+            count = 1
+
+def insert_pokemon(csv_file,con,columns):
+#csv file is file opened with pythons built in csv file handler
+#con is sqlite3 db connection
+#table name is a string containing the table name
+    table_name = 'pokemon'
+    count = 0
+    for record in csv_file:
+        if record[0] != "name" and count != 0:
+            
+            
+            sqlstring = "insert into " + table_name
+            sqlstring +=" (" + columns + ") values ("
+            
+            for i in record:
+                if not is_number(i) and i!= "-----" and i != "FALSE" and i != "yes" and i != "no" and i != "use" and i != "bred" and i != "trade" and i != "NA":
+                    sqlstring += "'" + i.replace("'","").replace('"',"") + "',"
+                elif i == "no":
+                    sqlstring += "0,"
+                elif i == "yes":
+                    sqlstring += "1,"
+                elif is_number(i):
+                    sqlstring += i + ","
+                else:
+                    sqlstring += "'',"
+            while sqlstring.endswith(','):   
+                sqlstring = sqlstring[:-1]
+            
+            sqlstring += ");"
+        
+            print("executing " + sqlstring)
+            outs = execute_sql(sqlstring,con)
+            print("output: ")
+            if outs != None:
+                for o in outs:
+                    print(o)
+        else:
+            count = 1
+
+
 con = open_db('pokedb.db')
 
 exec_string = []
@@ -89,13 +205,13 @@ exec_string.append("create table pokemon (" +
     "type2 text,\n" +
     "primary_attack text,\n" + 
     "secondary_attack text,\n" +
-    "location_record_id integer,\n" +
     "foreign key(primary_attack) references attacks(name),\n" +
-    "foreign key(secondary_attack) references attacks(name),\n" +
-    "foreign key(location_record_id) references locations(name));")
+    "foreign key(secondary_attack) references attacks(name)\n" +
+    ");")
 
-exec_string.append("create table location_records(" + 
-    "id integer primary key, \n" +'location_1 text not null,\n location_2 text not null,\n location_3 text not null,\n location_4 text not null, \nlocation_5 text not null,\n location_6 text not null,\n' + 
+exec_string.append("create table location_reference(" + 
+    "id integer primary key, \n" +"location_1 text not null,\n location_2 text not null,\n " +
+    'location_3 text not null,\n location_4 text not null, \nlocation_5 text not null,\n location_6 text not null,\n' + 
     'pokemon_name text not null, \n' + 'evolved int not null default 0, \n'+
     'evolved_from text, \n' + 'evolution_level integer,\n' + 'foreign key(location_1) references locations(name),\n'  + 
     'foreign key(location_2) references locations(name),\n' + 'foreign key(location_3) references locations(name),\n'  + 
@@ -141,6 +257,9 @@ locationrefreader = csv.reader(open(local_reference_csv))
 
 print("\n\n IMPORTING DATA")
 insert_locations(locationreader,con,'name,description')
+insert_attacks(attackreader,con,'name,damage,effect,targets,power_points,accuracy,location_name')
+insert_pokemon(pokereader,con,'name,type1,type2,hp,primary_attack,secondary_attack')
+
 con.close()
 
 
