@@ -1,0 +1,8 @@
+SCHEMA FOR ACCEPTABLE INPUT
+help - lists all commands
+struc - displays structure of db
+query - allows input for select statement to build query
+exit - closes application
+
+
+WITHIN QUERY MENU 

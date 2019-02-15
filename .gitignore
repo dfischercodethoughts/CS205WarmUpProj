@@ -2,3 +2,4 @@
 venv/
 db/
 bin/
+pokedb.db
