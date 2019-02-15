@@ -1,34 +1,7 @@
 #code to read in .csv files and init sqlite3 db
 import csv
 import sqlite3
-
-def is_number(in_str):
-    try:
-        int(in_str)
-        return True
-    except ValueError: 
-        return False
-
-def open_db(db_name):
-    try:
-        con = sqlite3.connect(db_name)
-        return con
-    except Exception as e:
-        print(e)
-
-    return None
-
-def execute_sql(sql_str, con):
-    cur = con.cursor()
-    try:
-        cur.execute(sql_str)
-        out = cur.fetchall()
-        con.commit()
-        return out
-    except Exception as e:
-        print(e)
-
-    return None
+import low_level
 
 def insert_locations(csv_file,con,columns):
 #csv file is file opened with pythons built in csv file handler
@@ -55,7 +28,7 @@ def insert_locations(csv_file,con,columns):
                 sqlstring = "insert into locations (name) values ('" + record[0] + "');"
         
             print("executing " + sqlstring)
-            outs = execute_sql(sqlstring,con)
+            outs = low_level.execute_sql(sqlstring,con)
             print("output: ")
             if outs != None:
                 for o in outs:
@@ -86,7 +59,7 @@ def insert_attacks(csv_file,con,columns):
             sqlstring += ");"
         
             print("executing " + sqlstring)
-            outs = execute_sql(sqlstring,con)
+            outs = low_level.execute_sql(sqlstring,con)
             print("output: ")
             if outs != None:
                 for o in outs:
@@ -123,7 +96,7 @@ def insert_location_references(csv_file,con,columns):
             sqlstring += ");"
         
             print("executing " + sqlstring)
-            outs = execute_sql(sqlstring,con)
+            outs = low_level.execute_sql(sqlstring,con)
             print("output: ")
             if outs != None:
                 for o in outs:
@@ -145,13 +118,13 @@ def insert_pokemon(csv_file,con,columns):
             sqlstring +=" (" + columns + ") values ("
             
             for i in record:
-                if not is_number(i) and i!= "-----" and i != "FALSE" and i != "yes" and i != "no" and i != "use" and i != "bred" and i != "trade" and i != "NA":
+                if not low_level.is_number(i) and i!= "-----" and i != "FALSE" and i != "yes" and i != "no" and i != "use" and i != "bred" and i != "trade" and i != "NA":
                     sqlstring += "'" + i.replace("'","").replace('"',"") + "',"
                 elif i == "no":
                     sqlstring += "0,"
                 elif i == "yes":
                     sqlstring += "1,"
-                elif is_number(i):
+                elif low_level.is_number(i):
                     sqlstring += i + ","
                 else:
                     sqlstring += "'',"
@@ -161,16 +134,13 @@ def insert_pokemon(csv_file,con,columns):
             sqlstring += ");"
         
             print("executing " + sqlstring)
-            outs = execute_sql(sqlstring,con)
+            outs = low_level.execute_sql(sqlstring,con)
             print("output: ")
             if outs != None:
                 for o in outs:
                     print(o)
         else:
             count = 1
-
-
-con = open_db('pokedb.db')
 
 exec_string = []
 
@@ -218,17 +188,22 @@ exec_string.append("create table location_reference(" +
     'foreign key(pokemon_name) references pokemon(name),\n' +
     'foreign key(parent_pokemon) references pokemon(name));' )
 
+
+con = low_level.open_db('pokedb.db')
+
+print(con)
+
 print("CREATING TABLES \n")
 for i in exec_string:
     print("\nexecuting: " + i)
-    out = execute_sql(i,con)
+    out = low_level.execute_sql(i,con)
     print("output: \n")
     if out != None:
         for o in out:
             print(o)
     print("next statement")
     
-out = execute_sql("select * from sqlite_master where type = 'table' order by name;",con)
+out = low_level.execute_sql("select * from sqlite_master where type = 'table' order by name;",con)
 
 print("\n\nRESULTANT TABLES:")
 for o in out:
