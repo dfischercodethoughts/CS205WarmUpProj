@@ -2,6 +2,7 @@
 import init_pokedb
 import sys
 import low_level
+import validate
 
 #################################### - UNSURE IF NECESSARY TO USE ARG_PARSE.... ####################
 #import argparse
