@@ -1,0 +1,90 @@
+﻿parent_pokemon,child_pokemon,evolved,item_used,item,traded,bred,other
+bulbasaur,iysaur,y,n,,n,n,
+ivysaur,venusaur,y,n,,n,n,
+charmander,charmeleon,y,n,,n,n,
+charmeleon,charizard,y,n,,n,n,
+squirtle,wartortle,y,n,,n,n,
+wartortle,blastoise,y,n,,n,n,
+caterpie,metapod,y,,,,,
+metapod,butterfree,y,,,,,
+weedle,kakuna,y,,,,,
+kakuna,beedrill,y,,,,,
+pidgey,pidgeotto,y,,,,,
+pidgeotto,pidgeot,y,,,,,
+rattata,raticate,y,,,,,
+spearow,fearow,y,,,,,
+fearow,spearow,n,,,,y,
+ekans,arbok,y,,,,,
+pikachu,raichu,n,y,thunder stone,,,
+sandshrew,sandslash,y,,,,,
+sandslash,sandshrew,,,,,y,
+nidoranf,nidorina,y,,,,,
+nidorina,nidoqueen,,y,moon stone,,,
+nidoranm,nidorino,y,,,,,
+nidorino,nidoking,,y,moon stone,,,
+cleffa,clefairy,y,,,,,
+clefairy,clefable,,y,moon stone,,,
+vulpix,ninetales,,y,fire stone,,,
+ninetales,vulpix,,,,,y,
+igglybuff,jigglypuff,y,,,,,high friendship
+jigglypuff,wigglytuff,,y,moon stone,,,
+zubat,golbat,y,,,,,
+golbat,crobat,y,,,,,high friendship
+oddish,gloom,y,,,,,
+gloom,vileplume,,y,leaf stone,,,
+gloom,bellossom,,y,sun stone,,,
+paras,parasect,y,,,,,
+venonat,venomoth,y,,,,,
+venomoth,venonat,,,,,y,
+diglett,dugtrio,y,,,,,
+dugtrio,diglett,,,,,y,
+meowth,persian,y,,,,,
+psyduck,golduck,y,,,,,
+mankey,primeape,y,,,,,
+growlithe,arcanine,,y,fire stone,,,
+poliwag,poliwhirl,y,,,,,
+poliwhirl,poliwrath,,y,water stone,,,
+poliwhirl,politoed,,,,y,,holding kings rock
+abra,kadabra,y,,,,,
+kadabra,alakazam,,,,y,,
+machop,machoke,y,,,,,
+machoke,machamp,,,,y,,
+bellsprout,weepinbell,y,,,,,
+weepinbell,victreebel,,y,leaf stone,,,
+tentacool,tentacruel,y,,,,,
+geodude,graveler,y,,,,,
+graveler,golem,,,,y,,
+ponyta,rapidash,y,,,,,
+slowpoke,slowbro,y,,,,,
+slowpoke,slowking,,,,y,,holding kings rock
+magnemite,magneton,y,,,,,
+magneton,magnezone,y,,,,,leveled up in special zone
+doduo,dodrio,y,,,,,
+seel,dewgong,y,,,,,
+dewgong,seel,,,,,y,
+grimer,muk,y,,,,,
+shellder,cloyster,,y,water stone,,,
+gastly,haunter,y,,,,,
+haunter,gengar,,,,y,,
+onix,steelix,,,,y,,holding steel coat
+drowsee,hypno,y,,,,,
+krabby,kingler,y,,,,,
+voltorb,electrode,y,,,,,
+electrode,voltorb,,,,,y,
+exeggcute,exeggutor,,y,leaf stone,,,
+cubone,marowak,y,,,,,
+tyrogue,hitmonlee,y,,,,,attack greater than defense
+tyrogue,hitmonchan,y,,,,,defense greater than attack
+tyrogue,hitmontop,y,,,,,hp/stamina greater than attack and defense
+lickitung,lickilicky,y,,,,,leveled up knowing rollout
+koffing,weezing,y,,,,,
+rhyhorn,rhydon,y,,,,,
+rhydon,rhyperior,,,,y,,traded holding protector
+happiny,chansey,y,,,,,leveled up holding an oval stone during the day
+chansey,blissey,y,,,,,high friendship
+tangela,tangrowth,y,,,,,leveled up knowing ancient power
+horsea,seadra,y,,,,,
+seadra,kingdra,,,,y,,holding dragon scale
+goldeen,seaking,y,,,,,
+staryu,starmie,,y,water stone,,,
+mimejr,mrmime,y,,,,,leveled up knowing mimic
