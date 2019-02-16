@@ -1,6 +1,8 @@
 ### main function to run our program
 import init_pokedb
 import sys
+import low_level
+
 #################################### - UNSURE IF NECESSARY TO USE ARG_PARSE.... ####################
 #import argparse
 
@@ -26,8 +28,26 @@ import sys
 #so, first input gives all potential tables
 
 
+def check_in_pokemon(word):
+    con = low_level.open_db('pokedb.db')
+    result = low_level.execute_sql('select * from pokemon where name = "' + word + '";')
+    con.close()
+    if result:
+        return True
+    
+    return False
+
+def check_in_location(word):
+    con = low_level.open_db('pokedb.db')
+    result = low_level.execute_sql('select * from location where name = "' + word + '";')
+    con.close()
+    if result:
+        return True
+    return False
+
 
 def validate_input(raw_dat):
+    
     tables = ["pokemon", "attacks", "locations"]
     columns = {
             ""}
@@ -36,6 +56,27 @@ def validate_input(raw_dat):
     for dat in split:
 
 
+def validate_word_one(word):
+    #ensures that word one is nonempty and in the pokedb
+    if len(word) > 2:
+        pokemon = word[0].upper() + word[1:len(word)-1].upper()
+        if check_pokemon(pokemon)| word.lower() =='pokemon' | word.lower() == 'list' | word.lower() = 'exit':
+            return True
+    
+    return False
+
+def validate_word_two(word):
+    table_dic = ['location','attacks','pokemon']
+    if word.lower() in table_dic:
+        return True
+    return False
+
+def validate_word_three(word):
+    #there will be a word three in cases of 'pokemon location *location_name*'
+    if check_in_location(word.lower()):
+        return True
+    return False
+
 if sys.__name__ == '__main__':
     init_pokedb()
     main()
@@ -43,18 +84,35 @@ if sys.__name__ == '__main__':
 class Input_Err(Exception):
     """INPROPER INPUT. PLEASE TRY AGAIN."""
     pass
+def transform(raw):
+    #outputs sql statement
+    split = raw.split(" ")
+    count = 0
+    sql_statement = ""
+    for word in split:
+        if count == 0:
+            pokemon = upper(word[0]) + lower(word[1:len(word)-1])
+            if check_in_pokemon(pokemon):
+            else:
+                if lower(word) == 'list':
+                    sql_statement = 
+
 
 def main():
     user_raw = ""
     
-    validated_input = ""
+    validated_input = []
 
     while valiated_input != "exit":
         #get user input on loop
         user_raw = raw_input() 
 
         #validate user input
-        
+        if user_raw.validate():
+            validated_input = transform(user_raw)
+            
+
+
     #execute statement based on user input
 
     #get output
