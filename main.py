@@ -27,10 +27,18 @@ import low_level
 
 #so, first input gives all potential tables
 
+class Input_Err(Exception):
+    
+    msg = ""
+    def __init__(self,word):
+        self.msg = word
+
+    print(msg)
+
 
 def check_in_pokemon(word):
     con = low_level.open_db('pokedb.db')
-    result = low_level.execute_sql('select * from pokemon where name = "' + word + '";')
+    result = low_level.execute_sql('select * from pokemon where name = "' + word + '";',con)
     con.close()
     if result:
         return True
@@ -39,28 +47,17 @@ def check_in_pokemon(word):
 
 def check_in_location(word):
     con = low_level.open_db('pokedb.db')
-    result = low_level.execute_sql('select * from location where name = "' + word + '";')
+    result = low_level.execute_sql('select * from locations where name = "' + word + '";',con)
     con.close()
     if result:
         return True
     return False
 
-
-def validate_input(raw_dat):
-    
-    tables = ["pokemon", "attacks", "locations"]
-    columns = {
-            ""}
-    #return true false, based on specific contents of input
-    split = raw_dat.split(" ")
-    for dat in split:
-
-
 def validate_word_one(word):
     #ensures that word one is nonempty and in the pokedb
     if len(word) > 2:
-        pokemon = word[0].upper() + word[1:len(word)-1].upper()
-        if check_pokemon(pokemon)| word.lower() =='pokemon' | word.lower() == 'list' | word.lower() = 'exit':
+        pokemon = word[0].upper() + word[1:len(word)].upper()
+        if check_in_pokemon(pokemon)| word.lower() =='pokemon' | word.lower() == 'list' | word.lower() == 'exit':
             return True
     
     return False
@@ -77,25 +74,29 @@ def validate_word_three(word):
         return True
     return False
 
+def has_special_chars(word):
+    for letter in word:
+        if letter == '?' | letter == ';' | letter == ',' | letter == '.' | letter == '/' | letter == ':' | letter == '"' | letter == "'" | letter == '{' | letter == '[' | letter == ']' | letter == '}' | letter=='\\' | letter == '|' \ letter == '=' | letter == '+' | letter == '-' | letter == '_' | letter == '!' | letter == '@' | letter == '#' | letter == '$' | letter == '%' | letter == '^' | letter == '&' | letter == '*' | letter == '(' | letter == ')' | letter == '~' | letter == '`':
+            return True
+    return False
+
 if sys.__name__ == '__main__':
-    init_pokedb()
+   # init_pokedb()
     main()
 
-class Input_Err(Exception):
-    """INPROPER INPUT. PLEASE TRY AGAIN."""
-    pass
-def transform(raw):
-    #outputs sql statement
-    split = raw.split(" ")
-    count = 0
-    sql_statement = ""
-    for word in split:
-        if count == 0:
-            pokemon = upper(word[0]) + lower(word[1:len(word)-1])
-            if check_in_pokemon(pokemon):
-            else:
-                if lower(word) == 'list':
-                    sql_statement = 
+#def transform(raw):
+#    #outputs sql statement
+#    split = raw.split(" ")
+#    count = 0
+#    sql_statement = ""
+#    for word in split:
+#        if count == 0:
+#            pokemon = upper(word[0]) + lower(word[1:len(word)-1])
+#            if check_in_pokemon(pokemon):
+#                
+#                else:
+#                if lower(word) == 'list':
+#                    sql_statement = 
 
 
 def main():
