@@ -1,11 +1,16 @@
 # CS205WarmUpProj
 Team Neutral FTW
 
-Tasks to be completed:
+Updated Tasks to be completed:
+    - Create functions Validate and Transform
+        - Put Validate in main and Transform in low level
+    - Create function to format the tables
+    - Create two functions to display array of data
+        - First function, one to remove Null data from output array
+        - Second Function takes the processed Array and formats it and display to console
     - Decide what data user should be able to look at
     - Write the function that takes the user input and validates it
     - Function which executes the user input and converts it to SQL query
-    - Potentially format the output of the Tables
 
 Hey guys, we should at the least have a decent run through of how our program works here.
 
