@@ -12,16 +12,17 @@ class Input_Error(Exception):
 
 def check_in_pokemon(word):
     con = low_level.open_db('pokedb.db')
-    result = low_level.execute_sql('select * from pokemon where name = "' + word + '";',con)
+    pokemon = word[0].upper() + word[1:-1].lower()
+    result = low_level.execute_sql('select * from pokemon where name = "' + pokemon + '";',con)
     con.close()
     if result:
         return True
     
     return False
 
-def check_in_location(word):
+def check_in_locations(word):
     con = low_level.open_db('pokedb.db')
-    result = low_level.execute_sql('select * from locations where name = "' + word + '";',con)
+    result = low_level.execute_sql('select * from locations where name = "' + word.lower() + '";',con)
     con.close()
     if result:
         return True
@@ -29,25 +30,30 @@ def check_in_location(word):
     return False
 
 def validate_word_one(word):
+    word_one_dic = ["pokemon", "list","exit"]
     #ensures that word one is nonempty and in the pokedb
-    if len(word) > 2:
+    if len(word) > 4:
         pokemon = word[0].upper() + word[1:-1].upper()
-        if check_in_pokemon(pokemon) or word.lower() =='pokemon' or word.lower() == 'list' or word.lower() == 'exit':
+        if check_in_pokemon(pokemon) or word.lower() in word_one_dic:
             return True
-    
-    raise Input_Error("Word one failed validation: " + word)
+    err_msg = word + " is not a valid option. Please enter 'pokemon_name [attacks/locations]', 'pokemon [location_name]', 'list [pokemon/attacks/locations]', or 'exit'."
+
+    raise Input_Error(err_msg)
 
 def validate_word_two(word):
     table_dic = ['location','attacks','pokemon']
-    if word.lower() in table_dic:
+    if word.lower() in table_dic or check_in_locations(word.lower()):
         return True
-    raise Input_Error("Word two is not a table name: " + word)
+    err_msg = "'" + word + "' is not a table name. Table names are:\n"
+    for table in table_dic:
+        err_msg += "\t" + table + "\n"
+    raise Input_Error(err_msg)
 
 def validate_word_three(word):
     #there will be a word three in cases of 'pokemon location *location_name*'
-    if check_in_location(word.lower()):
+    if check_in_locations(word.lower()):
         return True
-    raise Input_Error("Word three is not a location: " + word)
+    raise Input_Error(word + " is not a location. Please type 'list locations' to see all locations.")
 
 def has_special_chars(word):
     for letter in word:
