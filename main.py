@@ -29,6 +29,14 @@ import menu_options
 #         print("no results.")
 
 
+def sanitize(to_remove):
+    sanitized = to_remove.replace("!","").replace("@"."").replace("#","").replace("$"."").replace("%","").replace("^"."").replace("&","").replace("*"."").replace("(","").replace(")"."")
+    sanitized = sanitized.replace("-","").replace("="."").replace("+","").replace("["."").replace("{","").replace("}"."").replace("]","").replace("\\"."").replace("|","").replace(":"."")
+    sanitized = sanitized.replace("<","").replace(","."").replace(">","").replace("."."").replace("?","").replace("/"."").replace("'","").replace('"'."").replace(";","")
+    return sanitized
+
+
+
 #INTERESTING POKEMON: MRMIME MIMEJR
 def main():
     print("Welcome to the PokeDB!")
@@ -172,10 +180,14 @@ def main():
         #                     print(user_words[0] + " has no parents.")
         #
         #
-        #
-        # except validate.Input_Error as e:
-        #     print(e.msg)
+            elif(validate.check_in_locations(user_words[0].lower()):
+                results = select_pokemon_from_location(user_words[0])
+                display_pokemon_from_location(results)
 
+        except validate.Input_Error as e:
+             print(e.msg)
+
+    
 
             elif (validate.check_in_locations(user_words[0].lower())):
                 #searching for all pokemon in a given location
