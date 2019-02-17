@@ -12,13 +12,21 @@ class Input_Error(Exception):
 
 def check_in_pokemon(word):
     con = low_level.open_db('pokedb.db')
-    pokemon = word[0].upper() + word[1:-1].lower()
+    pokemon = word.lower()
     result = low_level.execute_sql('select * from pokemon where name = "' + pokemon + '";',con)
     con.close()
     if result:
         return True
     
     return False
+
+def check_table_name(word):
+    #returns true if table name, false if not
+    table_name_dic = ['attacks','pokemon','locations','evolutions']
+    if word.lower() in table_name_dic:
+        return True
+
+    raise Input_Error(word + " is not a table name.")
 
 def check_in_locations(word):
     con = low_level.open_db('pokedb.db')
@@ -32,8 +40,8 @@ def check_in_locations(word):
 def validate_word_one(word):
     word_one_dic = ["pokemon", "list","exit"]
     #ensures that word one is nonempty and in the pokedb
-    if len(word) > 4:
-        pokemon = word[0].upper() + word[1:-1].upper()
+    if len(word) >= 4:
+        pokemon = word.lower()
         if check_in_pokemon(pokemon) or word.lower() in word_one_dic:
             return True
     err_msg = word + " is not a valid option. Please enter 'pokemon_name [attacks/locations]', 'pokemon [location_name]', 'list [pokemon/attacks/locations]', or 'exit'."
