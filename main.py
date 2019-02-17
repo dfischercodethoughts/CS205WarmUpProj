@@ -208,4 +208,3 @@ def remove_special_chars(to_remove):
 if __name__ == '__main__':
    # init_pokedb()
     main()
-
