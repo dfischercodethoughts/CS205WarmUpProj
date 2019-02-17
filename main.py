@@ -100,6 +100,7 @@ def main():
                         raise validate.Input_Error("Something went wrong. Please try again.")
                 #if input 2 words, the first of which is a pokemon name
                 elif len(user_words) == 2:
+                    print("The length of your input is two words.")
                     # if user_words[1] == 'attacks':
                     #     #input pokemon_name attacks to get attack info for a specific pokemon
                     #     sql = "select attacks.name, attacks.damage,attacks.effects,attacks.targets,attacks.power_points,attacks.accuracy"
@@ -179,16 +180,36 @@ def main():
         #                     print(user_words[0] + " has no parents.")
         #
         #
-            elif(validate.check_in_locations(user_words[0].lower()):
-                results = select_pokemon_from_location(user_words[0])
-                display_pokemon_from_location(results)
+    
+
+            elif (validate.check_in_locations(user_words[0].lower())):
+                #searching for all pokemon in a given location
+                results = select_pokemon_from_location(user_words[0].lower())
+                display_pokemon_in_location(results)
+
+            else:
+                err_msg = "Sorry, that is incorrect input.\n"
+                err_msg += "Tables are attacks/locations/evolutions/pokemon.\n"
+                err_msg += "options in '||' are optional.\n"
+                err_msg += "\nPlease input either 'list [table]', '[pokemon_name] |[table_name]|', or '[location_name]'."
+                raise validate.Input_Error(err_msg)
 
         except validate.Input_Error as e:
-             print(e.msg)
+            print(e.msg)
 
-    
+def select_pokemon_from_location(location_name):
+
+
+def remove_special_chars(to_remove):
+    #DOES NOT SANITIZE UNDERSCORES
+    sanitized = to_remove.replace("!","").replace("@","").replace("#","").replace("$","").replace("%","").replace("^","").replace("&","")
+    sanitized = sanitized.replace("*", "").replace("(", "").replace(")", "").replace("-", "").replace("=", "")
+    sanitized = sanitized.replace("+", "").replace("[", "").replace("{", "").replace("}", "").replace("]", "")
+    sanitized = sanitized.replace("\\", "").replace("|", "").replace(";", "").replace(":", "").replace("'", "")
+    sanitized = sanitized.replace('"', "").replace("<", "").replace(",", "").replace(".", "").replace(">", "")
+    sanitized = sanitized.replace("/", "").replace("?", "").replace("~", "").replace("`", "")
+    return sanitized
 
 if __name__ == '__main__':
    # init_pokedb()
     main()
-

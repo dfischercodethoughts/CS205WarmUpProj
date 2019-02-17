@@ -80,29 +80,48 @@ def select_pokemon_evolutions(pokemon):
     parent_sql = "select pokemon.name, evolutions.child_poke, evolutions.evolved, evolutions.item_used, evolutions.item,evolutions.traded, evolutions.bred, evolutions.notes"
     parent_sql += " from pokemon left join evolutions on evolutions.parent_poke = pokemon.name where pokemon.name = '" + \
                   pokemon.lower() + "';"
-    results = execute(parent_sql)
+    parent_results = execute(parent_sql)
     child_sql = 'select pokemon.name, evolutions.child_poke, evolutions.evolved, evolutions.item_used, evolutions.item,evolutions.traded, evolutions.bred, evolutions.notes'
     child_sql += ' from pokemon left join evolutions on evolutions.child_poke = pokemon.name where pokemon.name = "' + \
                  pokemon.lower() + '";'
-    results = execute(child_sql)
+    child_results = execute(child_sql)
 
     # returns dictionary with keys and values
     dict_to_return = {
-        'parent_poke_name': results[0][0],
-        'child_poke_name': results[0][1],
-        'is_transformed_from': results[0][2],
-        'parent_item': results[0][3],
-        'is_evolved_from': results[0][4],
-        'evolves': results[0][5],
-        'can_be_transformed': results[0][6],
-        'item_used': results[0][7],
-        'can_be_bred': results[0][8],
-        'is_bred_from': results[0][9],
-        'parent_traded': results[0][10],
-        'traded_to_evolve': results[0][11],
-        'parent_additional_requirements': results[0][12],
-        'child_additional_requirements': results[0][13]
+        'parent_poke_name': "",
+        'child_poke_name': "",
+        'is_transformed': 0,
+        'parent_item': "",
+        'is_evolved': 0,
+        'evolves': 0,
+        'can_be_transformed': 0,
+        'item_used': "",
+        'can_be_bred': 0,
+        'is_bred_from_parent': 0,
+        'parent_traded': 0,
+        'trade_to_evolve': 0,
+        'parent_additional_requirements': "",
+        'child_additional_requirements': ""
     }
+
+    if parent_results:
+        dict_to_return['parent_poke_name'] = parent_results[0][0]
+        dict_to_return['parent_additional_requirements'] = parent_results[0][7]
+        dict_to_return['is_transformed'] = parent_results[0][3]
+        dict_to_return['parent_item'] = parent_results[0][4]
+        dict_to_return['is_bred_from_parent'] = parent_results[0][6]
+        dict_to_return['is_evolved'] = parent_results[0][2]
+        dict_to_return['parent_traded'] = parent_results[0][5]
+
+    if child_results:
+        dict_to_return['child_poke_name'] = child_results[0][1]
+        dict_to_return['child_additional_requirements'] = child_results[0][7]
+        dict_to_return['can_be_transformed'] = child_results[0][3]
+        dict_to_return['item_used'] = child_results[0][4]
+        dict_to_return['can_be_bred'] = child_results[0][6]
+        dict_to_return['evolves'] = child_results[0][2]
+        dict_to_return['trade_to_evolve'] = child_results[0][5]
+
     return dict_to_return
 
 
