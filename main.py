@@ -55,7 +55,7 @@ def main():
             #print("you input " + user_raw)
 
             if isinstance(user_raw,str):
-                validate.has_special_chars(user_raw)
+                validate.has_special_chars(user_raw) or validate.check_in_locations(user_raw.lower())
                 user_words = user_raw.split(' ' )
                 validate.check_size(user_words)
                 count = 0
