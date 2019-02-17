@@ -1,106 +1,191 @@
-﻿Name,Base Power,Move Description & Effects,Targets,PP,Accuracy,Location
-Hone Claws,--,Raises - Atk & Acc,Self,15,--,Route 5
+﻿Name,Base Power,Move Description  and  Effects,Targets,PP,Accuracy,Location
+Hone Claws,--,Raises Atk and Acc,Self,15,--,Route 5
 Dragon Claw,80,Damages target,Single,15,100,Victory Road
-Psyshock,80,User's SpAtk vs Target's Def,Single,10,100,Victory Road
-Calm Mind,--,Raises - SpAtk & SpDef,Self,20,--,Anistar Gym
-Roar,--,Flees/Switches,Single,20,--,Battle Maison
+Psyshock,80,Users SpAtk vs Targets Def,Single,10,100,Victory Road
+Calm Mind,--,Raises SpAtk SpDef,Self,20,--,Anistar Gym
+Roar,--,Flees or Switches,Single,20,--,Battle Maison
 Toxic,--,Poisons,Single,10,90,Route 14
-Hail,--,Summons - Hail for 5 Turns,--,10,--,Shalour PokéMart
-Bulk Up,--,Raises - Att & Def,Self,20,--,Snowbelle
-Venoshock,65,Greater damage - if target is poisoned,Single,10,100,Route 6
+Hail,--,Summons Hail for 5 Turns,--,10,--,Shalour PokeMart
+Bulk Up,--,raises att and def,Self,20,--,Snowbelle
+Venoshock,65,Greater damage if target is poisoned,Single,10,100,Route 6
 Hidden Power,60,Unique per Pokemon,Single,15,100,Anistar
-Sunny Day,--,Summons - Sunlight for 5 Turns,--,5,--,Lumiose PokéMart
-Taunt,--,Negates - all but damaging moves for 3 turns,Single,20,100,Lysandre Labs
+Sunny Day,--,Summons Sunlight for 5 Turns,--,5,--,Lumiose PokeMart
+Taunt,--,Negates  all but damaging moves for 3 turns,Single,20,100,Lysandre Labs
 Ice Beam,90,Freezes,Single,10,100,Snowbelle Gym
-Blizzard,110,Freezes,Multiple,5,70,Anistar PokéMart
-Hyper Beam,150,User - Rest next turn,Single,5,90,Anistar PokéMart
-Light Screen,--,Raises - SpDef,Self,30,--,Kiloude PokéMart
-Protect,--,Negates - all moves; fails if used consecutively,Self,10,--,Parfum Palace
-Rain Dance,--,Summons - Rain for 5 Turns,--,5,--,Lumiose PokéMart
-Roost,--,Restores HP - Half of Max HP,Self,10,--,Route 8
-Safeguard,--,Negates - all status moves for 5 turns,--,25,--,Shalour PokéMart
-Frustration,--,Greater damage - if hates trainer,Single,20,100,Connecting Cave
-Solar Beam,120,2 Turn Move - charges then attacks,Single,10,100,Route 21
-Smack Down,50,Negates - Flying/Levitate Pokemon,Single,15,100,Battle Maison
+Blizzard,110,Freezes,Multiple,5,70,Anistar PokeMart
+Hyper Beam,150,User  Rest next turn,Single,5,90,Anistar PokeMart
+Light Screen,--,Raises SpDef,Self,30,--,Kiloude PokeMart
+Protect,--,Negates all moves; fails if used consecutively,Self,10,--,Parfum Palace
+Rain Dance,--,Summons Rain for 5 Turns,--,5,--,Lumiose PokeMart
+Roost,--,Restores Half of Max HP,Self,10,--,Route 8
+Safeguard,--,Negates all status moves for 5 turns,--,25,--,Shalour PokeMart
+Frustration,--,Greater damage  if hates trainer,Single,20,100,Connecting Cave
+Solar Beam,120,2 Turn Move  charges then attacks,Single,10,100,Route 21
+Smack Down,50,Negates  Flying or Levitate Pokemon,Single,15,100,Battle Maison
 Thunderbolt,90,Paralyzes,Single,15,100,Lumiose Gym
-Thunder,110,Paralyzes,Single,10,70,Anistar PokéMart
+Thunder,110,Paralyzes,Single,10,70,Anistar PokeMart
 Earthquake,100,Damages target,Multiple,10,100,Route 22
-Return,--,Greater damage - if loves trainer,Single,20,100,Route 4
-Dig,80,2 Turn Move - burrows then attacks,Single,10,100,Shalour PokéMart
-Psychic,90,Lowers - SpDef,Single,10,100,Pokémon Village
-Shadow Ball,80,Lowers - SpDef,Single,15,100,Terminus Cave
-Brick Break,75,Negates - Light Screen & Reflect,Single,15,100,Terminus Cave
-Double Team,--,Raises - Evasion,Self,15,--,Anistar PokéCenter
-Reflect,--,Raises - Def,Self,20,--,Kiloude PokéMart
+Return,--,Greater damage  if loves trainer,Single,20,100,Route 4
+Dig,80,2 Turn Move  burrows then attacks,Single,10,100,Shalour PokeMart
+Psychic,90,Lowers SpDef,Single,10,100,Pokemon Village
+Shadow Ball,80,Lowers  SpDef,Single,15,100,Terminus Cave
+Brick Break,75,Negates  Light Screen  and  Reflect,Single,15,100,Terminus Cave
+Double Team,--,Raises  Evasion,Self,15,--,Anistar PokeCenter
+Reflect,--,Raises  Def,Self,20,--,Kiloude PokeMart
 Sludge Wave,95,Poisons,Multiple,10,100,Battle Maison
-Flamethrower,90,Burns,Single,15,100,Anistar PokéCenter
+Flamethrower,90,Burns,Single,15,100,Anistar PokeCenter
 Sludge Bomb,90,Poisons,Single,10,100,Route 19
-Sandstorm,--,Summons - Sandstorm for 5 turns,--,10,--,Shalour PokéMart
-Fire Blast,110,Burns,Single,5,85,Anistar Poké Mart
-Rock Tomb,60,Lowers - Speed,Single,15,95,Cyllage Gym
+Sandstorm,--,Summons  Sandstorm for 5 turns,--,10,--,Shalour PokeMart
+Fire Blast,110,Burns,Single,5,85,Anistar Poke Mart
+Rock Tomb,60,Lowers  Speed,Single,15,95,Cyllage Gym
 Aerial Ace,60,Always hits,Single,20,--,Connecting Cave
-Torment,--,Negates - same move used consecutively,Single,15,100,Laverre
-Facade,70,Greater damage - if user has status effect,Single,20,100,Dendimelle
-Flame Charge,50,User - Raises Speed,Single,20,100,Kalos Power Plant
-Rest,--,Restores HP - Fully and sleeps for 2 turns,Self,10,--,Cyllage
-Attract,--,"User - Attracts opposite gender, attacks less",Single,15,100,Route 12
-Thief,60,User - Steals held item if not holding anything,Single,25,100,Camphier
-Low Sweep,65,Lowers - Speed,Single,20,100,Tower of Mastery
-Round,60,Greater damage - if others use same move,Single,15,100,Battle Maison
-Echoed Voice,40,Greater damage - if used consecutively,Single,15,100,Hotel Richisseme
-Overheat,130,User - Lowers SpAtk,Single,5,90,Kiloude Poké Mart
-Steel Wing,70,User - Raises Def,Single,25,90,Battle Maison
-Focus Blast,120,Lowers - SpDef,Single,5,70,Anistar Poké Mart
-Energy Ball,90,Lowers - SpDef,Single,10,100,Route 20
+Torment,--,Negates  same move used consecutively,Single,15,100,Laverre
+Facade,70,Greater damage  if user has status effect,Single,20,100,Dendimelle
+Flame Charge,50,User  Raises Speed,Single,20,100,Kalos Power Plant
+Rest,--,Restores HP  Fully and sleeps for 2 turns,Self,10,--,Cyllage
+Attract,--,"User  Attracts opposite gender, attacks less",Single,15,100,Route 12
+Thief,60,User  Steals held item if not holding anything,Single,25,100,Camphier
+Low Sweep,65,Lowers  Speed,Single,20,100,Tower of Mastery
+Round,60,Greater damage  if others use same move,Single,15,100,Battle Maison
+Echoed Voice,40,Greater damage  if used consecutively,Single,15,100,Hotel Richisseme
+Overheat,130,User  Lowers SpAtk,Single,5,90,Kiloude Poke Mart
+Steel Wing,70,User  Raises Def,Single,25,90,Battle Maison
+Focus Blast,120,Lowers  SpDef,Single,5,70,Anistar Poke Mart
+Energy Ball,90,Lowers  SpDef,Single,10,100,Route 20
 False Swipe,40,1 HP left always,Single,40,100,Lumiose
 Scald,80,Burns,Single,15,100,Couriway
 Fling,--,Unique per item,Single,10,100,Lost Hotel
-Charge Beam,50,User - Raises SpAtk,Single,10,90,Route 13
-Sky Drop,60,2 Turn Move - picks up target then drops it,Single,10,100,KiloudE
-Incinerate,60,Negates - held berry,Single,15,100,Battle Maison
-Quash,--,"Negates - targets turn, goes last",Single,15,100,Battle Maison
+Charge Beam,50,User  Raises SpAtk,Single,10,90,Route 13
+Sky Drop,60,2 Turn Move  picks up target then drops it,Single,10,100,KiloudE
+Incinerate,60,Negates  held berry,Single,15,100,Battle Maison
+Quash,--,"Negates  targets turn, goes last",Single,15,100,Battle Maison
 Will-O-Wisp,--,Burns,Single,15,85,Route 14
-Acrobatics,55,Greater damage - if target isn't holding item,Single,15,100,Coumarine
-Embargo,--,Negates - item use ,Single,15,100,Coumarine
-Explosion,250,User - Faints,Multiple,5,100,Battle Maison
+Acrobatics,55,Greater damage  if target isnt holding item,Single,15,100,Coumarine
+Embargo,--,Negates  item use ,Single,15,100,Coumarine
+Explosion,250,User  Faints,Multiple,5,100,Battle Maison
 Shadow Claw,70,Higher Critical Hit Ratio,Single,15,100,Glittering Cave
-Payback,50,Greater damage - if user moves after target,Single,10,100,Geosenge
-Retaliate,70,Greater damage - if used right after ally faints,Single,5,100,Battle Maison
-Giga Impact,150,User - Rest next turn,Single,5,90,Kiloude PokéMart
-Rock Polish,--,Raises - Speed,Self,20,--,Route 11
-Flash,--,Lowers - Acc,Single,20,100,Reflection Cave
+Payback,50,Greater damage  if user moves after target,Single,10,100,Geosenge
+Retaliate,70,Greater damage  if used right after ally faints,Single,5,100,Battle Maison
+Giga Impact,150,User  Rest next turn,Single,5,90,Kiloude PokeMart
+Rock Polish,--,Raises  Speed,Self,20,--,Route 11
+Flash,--,Lowers  Acc,Single,20,100,Reflection Cave
 Stone Edge,100,Higher Critical Hit Ratio,Single,5,80,Frost Cavern
-Volt Switch,70,User - switches out after attack,Single,20,100,Battle Maison
+Volt Switch,70,User  switches out after attack,Single,20,100,Battle Maison
 Thunder Wave,--,Paralyzes,Single,20,100,Route 10
-Gyro Ball,--,Greater damage - if user is slower,Single,5,100,Reflection Cave
-Swords Dance,--,Raises - Atk,Self,30,--,Lumiose PokéMart
-Struggle Bug,50,Lowers - SpAtk,Single,20,100,Lumiose PokéMart
-Psych Up,--,User - copies target's stat changes,Self,10,--,Anistar PokéMart
-Bulldoze,60,Lowers - Speed,Multiple,20,100,Lumiose PokéMart
+Gyro Ball,--,Greater damage  if user is slower,Single,5,100,Reflection Cave
+Swords Dance,--,Raises  Atk,Self,30,--,Lumiose PokeMart
+Struggle Bug,50,Lowers  SpAtk,Single,20,100,Lumiose PokeMart
+Psych Up,--,User  copies targets stat changes,Self,10,--,Anistar PokeMart
+Bulldoze,60,Lowers  Speed,Multiple,20,100,Lumiose PokeMart
 Frost Breath,60,Always lands critical hits,Single,10,90,Frost Cavern
 Rock Slide,75,Flinches,Multiple,10,90,Couriway
 X-Scissor,80,Damages target,Single,15,100,Azure Bay
-Dragon Tail,60,Flees/Switches,Single,10,90,Lumiose Museum
-Infestation,20,Trapped - 4 to 5 turns,Single,35,100,Santalune Gym
-Poison Jab,80,Poisons,Single,20,100,Shalour PokéMart
-Dream Eater,100,Restores HP - Half the damage inflicted,Single,15,100,Battle Maison
-Grass Knot,--,Greater damage - if target is heavier,Single,20,100,Coumarine Gym
-Swagger,--,Raises - Atk but Confuses,Single,15,90,Battle Maison
-Sleep Talk,--,User - uses random known move,--,10,--,Random Hotel
-U-turn,70,User - switches out after attack,Single,20,100,Couriway
-Substitute,--,User - Uses HP to make decoy,Self,10,--,Anistar PokéCenter
-Flash Cannon,80,Lowers - SpDef,Single,10,100,Kiloude
+Dragon Tail,60,Flees or Switches,Single,10,90,Lumiose Museum
+Infestation,20,Trapped  4 to 5 turns,Single,35,100,Santalune Gym
+Poison Jab,80,Poisons,Single,20,100,Shalour PokeMart
+Dream Eater,100,Restores HP  Half the damage inflicted,Single,15,100,Battle Maison
+Grass Knot,--,Greater damage  if target is heavier,Single,20,100,Coumarine Gym
+Swagger,--,Raises  Atk but Confuses,Single,15,90,Battle Maison
+Sleep Talk,--,User  uses random known move,--,10,--,Random Hotel
+U-turn,70,User  switches out after attack,Single,20,100,Couriway
+Substitute,--,User  Uses HP to make decoy,Self,10,--,Anistar PokeCenter
+Flash Cannon,80,Lowers  SpDef,Single,10,100,Kiloude
 Trick Room,--,Slower Pokemon go first,--,5,--,Coumarine
-Wild Charge,90,User - damages itself,Single,15,100,Kiloude PokéMart
-Rock Smash,40,Lowers - Def; can smash rocks,Single,15,100,Ambrette
-Snarl,55,Lowers - SpAtk,Single,15,95,Lost Hotel
+Wild Charge,90,User  damages itself,Single,15,100,Kiloude PokeMart
+Rock Smash,40,Lowers  Def; can smash rocks,Single,15,100,Ambrette
+Snarl,55,Lowers  SpAtk,Single,15,95,Lost Hotel
 Nature Power,--,Unique per area,Single,20,--,Ambrette Hotel
 Dark Pulse,80,Flinches,Single,15,100,Route 16
-Power-Up Punch,40,Raises - Atk,Single,30,100,Shalour Gym
+Power-Up Punch,40,Raises  Atk,Single,30,100,Shalour Gym
 Dazzling Gleam,80,Damages target,Multiple,10,100,Laverre Gym
-Confide,--,Lowers - SpAtk,Single,20,--,Coumarine
+Confide,--,Lowers  SpAtk,Single,20,--,Coumarine
 Cut,50,Cuts down trees,Single,30,95,Parfum Palace-Maze
-Fly,90,"2 Turn Move; Fly, then attacks; Travel",Single,15,95,Coumarine-Sycamore
+Fly,90,"2 Turn Move: Fly, then attacks. Travel",Single,15,95,Coumarine-Sycamore
 Surf,90,Cross bodies of water,Multiple,15,100,Shalour-Calem/Serena
 Strength,80,Move boulders in an area,Single,15,100,Cyllage-Grant
 Waterfall,80,Climb a waterfall,Single,15,100,Route 19-Shauna
+chlorophyll,,doubles speed in bright sunshine,Self,0,100,none
+overgrow,,powers up grass type moves in a pinch,Self,0,100,none
+blaze,,powers up fire type moves in a pinch,Self,0,100,none
+solar power,,"boosts special attack, costs health per turn",Self,5,100,none
+torrent,,boosts water type moves in a pinch,Self,5,100,none
+rain dish,,gains health per turn in rain,Self,5,100,none
+shield dust,,blocks effects,Self,10,100,none
+run away,,allows fleeing,Self,5,100,none
+shed skin,,heals of status effects,Self,5,100,none
+compound eyes,,raises accuracy by 30% and increase drop chance,Self,10,100,none
+tinted lens,,powers up not very effective moves,Self,5,100,none
+swarm,,boosts bug type moves in a pinch,Self,5,100,none
+sniper,,boosts critical hits by 1.5x,Self,5,100,none
+keen eye,,prevents loss of accuracy,Self,5,100,none
+big pecks,,prevents loss of defense,Self,5,100,none
+hustle,,increases attack but lowers accuracy,Self,10,100,none
+intimidate,,lowers enemys attack,single,10,100,none
+unnerve,,makes the foe unable to eat berrys,single,10,100,none
+static,,chance of paralyzing the enemy,single,30,30,none
+lightning rod,,draws all electric type attacks,Self,10,100,none
+sand veil,,raises defense in sandstorm,Self,10,100,none
+sand rush,,doubles speed during sandstorm,Self,20,100,none
+poison point,,poisons,single,15,30,none
+sheer force,,removes effects to improve damage,Self,15,100,none
+cute charm,,causes infatuation on contact,single,25,30,none
+friend guard,,reduces damage done to allies,Multiple,15,100,none
+unaware,,ignore stat changes in pokemon,Self,10,100,none
+flash fire,,powers up if hit by fire,single,15,50,none
+drought,,creates sunlight in battle,Multiple,15,100,none
+frisk,,pokemon can check enemys weapon,single,20,90,none
+inner focus,,prevents flinching,Self,10,100,none
+infiltrator,,effects pass through enemys protections,Multiple,10,100,none
+stench,,helps ward off wild animals,,25,10,none
+effect spore,,"touch poisons, paralyzes, or sleeps",Single,25,30,none
+healer,,heals ally of status effects,Single,25,100,none
+damp,,prevents combatants from self destructing,Multiple,20,100,none
+wonder skin,,halves the accuracy of effect inducing attacks,Self,25,100,none
+sand force,,boosts certain moves during a sandstorm,Self,20,100,none
+pickup,,may pickup items,Single,5,10,none
+limber,,protected from paralysis,Self,10,100,none
+swift swim,,doubles speed in rain,Self,10,100,none
+vital spirit,,prevents sleep,self,5,100,none
+defiant,,increases attack when stats are lowered,Self,15,100,none
+justified,,raises attack when hit by dark type attack,Self,15,100,none
+water absorb,,heals when hit by water attack,Self,25,100,none
+drizzle,,creates rain upon entering battle,Multiple,15,100,none
+synchronize,,passes status harms to the foe,Single,20,100,none
+magic guard,,prevents damage from status effects,Self,20,100,none
+guts,,boots attack when under status effect,Self,15,100,none
+steadfast,,raises speed each time the enemy flinches,Self,10,100,none
+gluttony,,uses healing berry sooner,Self,0,100,none
+clear body,,prevents this pokemons stats from being lowered,Self,20,100,none
+rock head,,prevents recoil damage,Self,10,100,none
+flame body,,burns the enemt on contact,Single,25,30,none
+regenerator,,heals a third of its hp when switching out,Self,25,100,none
+oblivious,,renders the pokemon immune to gender based attacks,self,10,100,none
+magnet pull,,prevents steel type pokemon from fleeing,Multiple,15,100,none
+analytic,,boosts move powers when moves last,Self,15,100,none
+tangled feet,,raises evasion if confused,Self,20,100,none
+thick fat,,raises defense against fire and ice,Self,15,85,none
+ice body,,heals during hail,Self,15,6,none
+poison touch,,poisons on contact,Single,10,30,none
+shell armor,,prevents critical hits,Self,15,100,none
+overcoat,,prevents damage from weather conditions,Self,15,100,none
+levitate,,pokemon is raised. Not affected by ground type attacks,Self,25,100,none
+weak armor,,"when hit, defense drops one stage but speed increases",Self,15,100,none
+insomnia,,prevents rest,Self,10,100,none
+hyper cutter,,prevents attack from being lowered,Self,10,100,none
+soundproof,,pokemon is immune to sound based moves,Self,15,100,none
+aftermath,,damages killing foe,Single,15,25,
+harvest,,may create a berry after one is used,Multiple,20,100,none
+battle armor,,prevents critical hits,Self,15,100,none
+uburden,,raises speed if held item is used,Self,10,100,none
+own tempo,,prevents confusion,Self,10,100,none
+cloud nine,,prevents all effects from weather (inc. damage increases),Multiple,25,100,none
+reckless,,increases power and damage of recoil moves,Single,15,20,none
+natural cure,,status problems heal when switched out,Self,15,100,none
+early bird,,"when asleep, awakens early",Self,20,100,none
+illuminate,,attracts wild pokemon,Multiple,0,0,none
+technician,,improves weaker attacks,Self,15,100,none
+light metal,,halves the weight of the pokemon,Self,0,0,none
+hydration,,heals status effects during rain,Self,15,100,none
+dry skin,,reduces hp if hot. Water heals,Self,15,100,none
+motor drive,,raises speed if hit by electric type attack,Self,15,100,none
+moxie,,increases attack upon KO,Self,10,100,none
