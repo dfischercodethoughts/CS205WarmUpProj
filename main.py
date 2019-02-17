@@ -180,13 +180,6 @@ def main():
         #                     print(user_words[0] + " has no parents.")
         #
         #
-            elif(validate.check_in_locations(user_words[0].lower()):
-                results = select_pokemon_from_location(user_words[0])
-                display_pokemon_from_location(results)
-
-        except validate.Input_Error as e:
-             print(e.msg)
-
     
 
             elif (validate.check_in_locations(user_words[0].lower())):
