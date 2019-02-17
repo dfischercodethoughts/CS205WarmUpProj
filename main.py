@@ -27,6 +27,20 @@ def display_results(results, type_of_output):
     else:
         print("no results.")
 
+def select_pokemon(pokemon):
+    sql = 'select name, type1, type2, hp,primary_attack,secondary_attack,evolution from pokemon where name = "' + pokemon.lower() + '";'
+    results = low_level.execute_sql(sql)
+    #returns dictionary with keys and values
+    dic_to_return = {
+            'name': results[0][0],
+            'type_1':results[0][1],
+            'type_2' : results[0][2],
+            'hp' : results[0][3],
+            'primary_attack':results[0][4],
+            'secondary_attack' : results[0][5],
+            'evolution_level' : results[0][6]
+            }
+    return dic_to_return
 
 #INTERESTING POKEMON: MRMIME MIMEJR
 def main():
@@ -70,12 +84,22 @@ def main():
                 #switch on second word
                 if len(user_words) == 1:
                     #input just pokemon name; want information on that pokemon
-                    sql = "select * from pokemon where name = '" + user_words[0].lower() + "';"
+                    sql = "select name, type1,type2,hp,primary_attack,secondary_attack,evolution_level from pokemon where name = '" + user_words[0].lower() + "';"
                     results = execute(sql)
                     if results:
-                        print("Results: ")
-                        for r in results:
-                            print(r)
+                        print("Name: " + results[0][0]+'\n')
+                        print('\tType 1: ' + results[0][1])
+                        if (results[0][2] != ""):
+                            print("\tType 2: " + results[0][2])
+                        print("\tHealth: " + str(results[0][3]))
+                        print("\tAttack 1: " + results[0][4])
+                        if (results[0][5] != ""):
+                            print("\tAttack 2: " + results[0][5])
+                        if (results[0][6] != 0):
+                            print("\tEvolves at level " + str(results[0][6]))
+                        else:
+                            print("\tDoes not evolve")
+
 
                     else:
                         raise validate.Input_Error("Something went wrong. Please try again.")
