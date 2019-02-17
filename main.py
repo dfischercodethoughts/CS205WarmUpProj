@@ -176,6 +176,14 @@ def main():
         #     print(e.msg)
 
 
+def sanitize(to_remove):
+    sanitized = to_remove.replace("!","").replace("@"."").replace("#","").replace("$"."").replace("%","").replace("^"."").replace("&","").replace("*"."").replace("(","").replace(")"."")
+    sanitized = sanitized.replace("-","").replace("="."").replace("+","").replace("["."").replace("{","").replace("}"."").replace("]","").replace("\\"."").replace("|","").replace(":"."")
+    sanitized = sanitized.replace("<","").replace(","."").replace(">","").replace("."."").replace("?","").replace("/"."").replace("'","").replace('"'."").replace(";","")
+    return sanitized
+
+    
+
 if __name__ == '__main__':
    # init_pokedb()
     main()
