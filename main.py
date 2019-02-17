@@ -11,94 +11,156 @@ import validate
 
 def execute(string):
     #assumes properly formatted input
+    print("\nExecuting: " + string)
     con = low_level.open_db(DATABASE_NAME)
     results =  low_level.execute_sql(string,con)
     con.close()
+    print("Done.")
     return results
+
+
+def display_results(results, type_of_output):
+    #naive implementation simply prints out all results
+    if results:
+        for r in results:
+            print(r)
+    else:
+        print("no results.")
+
 
 #INTERESTING POKEMON: MRMIME MIMEJR
 def main():
-    print("Welcom to the PokeDB!")
+    print("Welcome to the PokeDB!")
     user_raw = ""
-    
     
     while True:
         try:
-            print("Enter your command:")
-    
-            #get user input on loop
-            user_raw = input() 
-            user_words = user_raw.split(' ' )
-            validate.check_size(user_words)
-            validate.check_first_word(user_words[0])
+            print("\nEnter command:")
+
+            user_raw = input()
+            #print("you input " + user_raw)
+
+            if isinstance(user_raw,str):
+                validate.has_special_chars(user_raw)
+                user_words = user_raw.split(' ' )
+                validate.check_size(user_words)
+                count = 0
+                for word in user_words:
+                    user_words[count] = word.lower()
+                    count += 1
+            else:
+                raise validate.Input_Error("Please enter 1-3 words: *pokemon_name* [table_name] eg. bulbasaur attacks.")
+
             if "exit" in user_words:
                 break
-            if len(user_words) == 1:
-                
-                if user_words[0] == "exit":
-                    break
-                
-                elif user_words[0] == 'list':
-                    raise validate.Input_Error('When using list, please enter a table name as well.')
-                
-                elif user_words[0] == 'pokemon':
-                    sql = 'select * from pokemon;'
-                    results = execute(sql)
-                    display_results(results,'pokemon_list')
-
-                elif check_in_pokemon(user_words[0]):
-                    #want to select pokemon's information
-                    sql = "select * from pokemon where name = '" + user_words[0] + "';"
-                    results = execute(sql)
-                    display_results(results, 'pokemon_record')
-            
-            elif len(use_words) == 2:
-                validate.validate_second_word(user_words[1])
-                if user_words[0] == "list":
-                    #select all records from a table
+            if user_words[0].lower() == 'list':
+                if len(user_words) == 2:
+                    
+                    validate.check_table_name(user_words[1].lower())
                     sql = "select * from " + user_words[1].lower() + ";"
                     results = execute(sql)
                     if results:
-                        display_results(results,user_words[1].lower() + "_list")
+                        for r in results:
+                            print(r)
                     else:
-                        raise validate.Input_Error("Something went wrong. Could not find the table requested.")
-                elif validate.check_in_pokemon(user_words[0]):
-                    if (user_words[1].lower() == "locations"):
-                        #select location data of pokemon specified
-                        pokemon = user_words[0][0].upper() + user_words[0][1:-1].lower()
-                        sql = "select * from location_reference where pokemon_name = '" + pokemon + "' left join pokemon on location_reference.pokemon_name = pokemon.name;"
-                        results = execute(sql)
-                        
-
-
-            #validate user input will throw exception if it's invalid
-            if validate.validate_input(user_raw):
-                words = user_raw.split()
-                if words[0] == "exit":
-                    break
-                elif words [0] == 'list':
-                    # expect tablename in second word
-                    #since input is validated, safe to assume second word has table name
-                    sql = generate_sql(words,'list')
-                    con = low_level.open_db('pokedb.db')
-                    results = low_level.execute_sql(sql)
-                    con.close()
-                    disp_results('list',results)
-                elif words[0] == 'pokemon':
-                    sql = generate_sql(words,'pokemon_at_location')
-                    con = low_level.open_db('pokedb.db')
-                    results = low_level.execute_sql(sql,con)
-                    con.close()
-                    disp_results('pokemon_at_location',results)
-                elif validate.check_in_pokemon(words[0]):
-                    sql = generate_sql(words,'pokemon_info')
-                    con = low_level.open_db('pokedb.db')
-                    results = low_level.execute_sql(sql,con)
-                    con.close()
-                    disp_results('pokemon_info',results)
-
+                        raise validate.Input_Error("something went wrong")
                 else:
-                    print("Flow should not get here. ERROR")
+                    raise validate.Input_Error("Please input 'list' followed by a table name: attacks locations pokemon or evolutions.")
+            elif validate.check_in_pokemon(user_words[0].lower()):
+                #switch on second word
+                if len(user_words) == 1:
+                    #input just pokemon name; want information on that pokemon
+                    sql = "select * from pokemon where name = '" + user_words[0].lower() + "';"
+                    results = execute(sql)
+                    if results:
+                        print("Results: ")
+                        for r in results:
+                            print(r)
+
+                    else:
+                        raise validate.Input_Error("Something went wrong. Please try again.")
+                #if input 2 words, the first of which is a pokemon name
+                elif len(user_words) == 2:
+                    if user_words[1] == 'attacks':
+                        #input pokemon_name attacks to get attack info for a specific pokemon
+                        sql = "select attacks.name, attacks.damage,attacks.effects,attacks.targets,attacks.power_points,attacks.accuracy"
+                        sql += ", attacks.location_name, attacks from attacks left join pokemon on pokemon.primary_attack = attacks.name where pokemon.name = '" + user_words[0].lower() + "';"
+                        primary_att_results = execute(sql)
+                        sql = "select * from attacks left join pokemon on pokemon.secondary_attack = attacks.name where pokemon.name = '" + user_words[0].lower() + "';"
+                        secondary_att_results = execute(sql)
+                        
+                        print("Attack information for " + user_words[0])
+
+                        if primary_att_results:
+                            print("Primary attacks: ")
+                            display_results(primary_att_results,"")
+                        else:
+                            print("No information on primary attack.")
+                        if secondary_att_results:
+                            print("Secondary attacks: ")
+                            display_results(primary_att_results,"")
+                        else:
+                            print("No information on secondary attack.")
+                        
+                    elif user_words[1] == 'locations':
+                        #wants location information on a given pokemon
+                        sql = "select * from pokemon left join location_reference on location_reference.pokemon_name = pokemon.name where pokemon.name = '" + user_words[0].lower() + "';"
+                        results = execute(sql)
+                        if results:
+                            print("Results: ")
+                            print(results)
+                        else:
+                            raise validate.Input_Error("Something went wrong. No results. Please try again.")
+                    
+                    elif user_words[1] == 'evolutions':
+                        #want evolution information for a specific pokemon
+                        #result has format:
+                            #poke name, child pokemon, (int 0/1) evolved, item_used, (str) item, (int 0/1) traded, bred, (str) notes
+                        parent_sql = "select pokemon.name, evolutions.child_poke, evolutions.evolved, evolutions.item_used, evolutions.item,evolutions.traded, evolutions.bred, evolutions.notes"
+                        parent_sql += " from pokemon left join evolutions on evolutions.parent_poke = pokemon.name where pokemon.name = '" + user_words[0] + "';"
+                        parent_results = execute(parent_sql)
+                        child_sql = 'select pokemon.name, evolutions.child_poke, evolutions.evolved, evolutions.item_used, evolutions.item,evolutions.traded, evolutions.bred, evolutions.notes' 
+                        child_sql += ' from pokemon left join evolutions on evolutions.child_poke = pokemon.name where pokemon.name = "' + user_words[0] + '";'
+                        child_results = execute(child_sql)
+                        if child_results:
+                            #print(child_results)
+                            #print(len(child_results))
+                            #print(child_results[0][1])
+                            if child_results[0][2] == 1:
+                                print(user_words[0] + " evolves from " + child_results[0][1])
+                            elif child_results[0][3] == 1:
+                                print(user_words[0] + " can be transformed from " + child_results[0][1] + " using: " + child_results[0][4])
+                            elif child_results[0][5] == 1:
+                                result_str = user_words[0] + " evolves from " + child_results[0][1] + " after trading"
+                                if child_results[0][7] != "":
+                                    result_str += ", with additional requirements: " + child_results[0][7]
+                                print(result_str)
+
+                            elif child_results[0][6] == 1:
+                                print(user_words[0] + " can be bred from " + child_results[0][1]) 
+                        else:
+                            print(user_words[0] + " has no parents.")
+
+                        if parent_results:
+                            #print(parent_results)
+                            if parent_results[0][2] == 1:
+                                print(user_words[0] + " evolves into " + parent_results[0][1])
+                            elif parent_results[0][3] == 1:
+                                print(user_words[0] + " can be transformed into " + parent_results[0][1] + " using: " + parent_results[0][4])
+                            elif parent_results[0][5] == 1:
+                                result_str = user_words[0] + " can be traded to evolve into " + parent_results[0][1]
+                                if parent_results[0][7] != "":
+                                    result_str += ", with additional requirements: " + parent_results[0][7]
+                                print(result_str)
+
+                            elif child_results[0][6] == 1:
+                                print(user_words[0] + " can be bred into " + parent_results[0][1])
+
+                        else:
+                            print(user_words[0] + " has no parents.")
+
+
+
         except validate.Input_Error as e:
             print(e.msg)
 

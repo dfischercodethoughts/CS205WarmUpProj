@@ -50,7 +50,7 @@ def insert_attacks(csv_file,con,columns):
             sqlstring +=" (" + columns + ") values ('"
             for i in record:
                 if i != "--" and i != "----" and i != "":
-                    sqlstring += i.replace("'","").replace('"',"")
+                    sqlstring += i.replace("'","").replace('"',"").lower()
                     sqlstring += "','"
                 #for building location db, we just want to insert location name and description (other cols ommitted)
                 else:
@@ -200,11 +200,11 @@ def create_tables():
         "foreign key(secondary_attack) references attacks(name));")
 
     exec_string.append("create table location_reference(" + 
-       'pokemon_name text not null, location_name text not null, foreign key (pokemon_name) references pokemon(name), foreign key (location_name) references locations(name));' )
+       'pokemon_name text not null, location_name text not null,primary key (pokemon_name,location_name), foreign key (pokemon_name) references pokemon(name), foreign key (location_name) references locations(name));' )
 
     exec_string.append("create table evolutions (" +
-            "id integer primary key, parent_poke text not null, child_poke text not null, evolved integer default 0, item_used integer default 0, item text default '', " +
-            "traded integer default 0, bred integer default 0, notes text," +
+            " parent_poke text not null, child_poke text not null, evolved integer default 0, item_used integer default 0, item text default '', " +
+            "traded integer default 0, bred integer default 0, notes text, primary key (parent_poke, child_poke)," +
             "foreign key (parent_poke) references pokemon(name), foreign key (child_poke) references pokemon(name));")
 
 
