@@ -10,7 +10,7 @@ wartortle,Water,-----,59,Torrent,Rain Dish,36
 blastoise,Water,-----,79,Torrent,Rain Dish,FALSE
 caterpie,Bug,-----,45,Shield Dust,Run Away,7
 metapod,Bug,-----,50,Shed Skin,-----,10
-butterfree,Bug,Flying,60,Compoundeyes,Tinted Lens,FALSE
+butterfree,Bug,Flying,60,Compound eyes,Tinted Lens,FALSE
 weedle,Bug,Poison,40,Shield Dust,Run Away,FALSE
 kakuna,Bug,Poison,45,Shed Skin,-----,10
 beedrill,Bug,Poison,65,Swarm,Sniper,FALSE
@@ -23,8 +23,8 @@ spearow,Normal,Flying,40,Keen Eye,Sniper,20
 fearow,Normal,Flying,65,Keen Eye,Sniper,FALSE
 ekans,Poison,-----,35,Intimidate,Unnerve,22
 arbok,Poison,-----,60,Intimidate,Unnerve,FALSE
-pikachu,Electric,-----,35,Static,Lightningrod,FALSE
-raichu,Electric,-----,60,Static,Lightningrod,FALSE
+pikachu,Electric,-----,35,Static,Lightning rod,FALSE
+raichu,Electric,-----,60,Static,Lightning rod,FALSE
 sandshrew,Ground,-----,50,Sand Veil,Sand Rush,22
 sandslash,Ground,-----,75,Sand Veil,Sand Rush,FALSE
 nidoranf,Poison,-----,55,Poison Point,Hustle,16
@@ -50,7 +50,7 @@ vileplume,Grass,Poison,75,Chlorophyll,Effect Spore,
 bellossom,Grass,-----,75,Chlorophyll,Healer,FALSE
 paras,Bug,Grass,35,Effect Spore,Damp,24
 parasect,Bug,Grass,60,Effect Spore,Damp,FALSE
-venonat,Bug,Poison,60,Compoundeyes,Run Away,31
+venonat,Bug,Poison,60,Compound eyes,Run Away,31
 venomoth,Bug,Poison,70,Shield Dust,Wonder Skin,FALSE
 diglett,Ground,-----,10,Sand Veil,Sand Force,26
 dugtrio,Ground,-----,35,Sand Veil,Sand Force,FALSE
@@ -120,9 +120,9 @@ lickitung,Normal,-----,90,Own Tempo,Cloud Nine,
 lickilicky,Normal,-----,110,Own Tempo,Cloud Nine,FALSE
 koffing,Poison,-----,40,Levitate,-----,35
 weezing,Poison,-----,65,Levitate,-----,FALSE
-rhyhorn,Ground,Rock,80,Lightningrod,Reckless,42
-rhydon,Ground,Rock,105,Lightningrod,Reckless,
-rhyperior,Ground,Rock,115,Lightningrod,Reckless,
+rhyhorn,Ground,Rock,80,Lightning rod,Reckless,42
+rhydon,Ground,Rock,105,Lightning rod,Reckless,
+rhyperior,Ground,Rock,115,Lightning rod,Reckless,
 happiny,Normal,-----,100,Natural Cure,Friend Guard,FALSE
 chansey,Normal,-----,250,Natural Cure,Healer,
 blissey,Normal,-----,255,Natural Cure,Healer,FALSE
