@@ -4,7 +4,9 @@ def display_key_and_value(key,value,left_size=25,right_size=25):
     if value != "" and value != 0:
         if value == None:
             value = ""
-        new_key = key[0].upper() + key[1:len(key)].lower()
+        new_key = key
+        if len(key) > 2:
+            new_key = key[0].upper() + key[1:len(key)].lower()
         return_str = "|{:>" + str(left_size) + "}:{:<" + str(right_size) + "}|"
         return_str = return_str.format(new_key,value)
         print(return_str)
@@ -25,39 +27,66 @@ def display_pokemon(dictionary):
     if dictionary.get("evolution_level") != 0:
         display_key_and_value("evolves at level",dictionary.get("evolution_level"))
     print(first_last_str)
+    
+def display_pokemon_evolutions(list_of_dics, poke_name):
+    header = poke_name[0].upper() + poke_name[1:len(poke_name)] + " Evolutions"
+    print("{:^50}".format(header))
+    print("-" * 52)
+    for dic in list_of_dics:
+        print("-" * 52)
+        #print(dic)
+        if dic.get("is_parent"):
+            display_key_and_value("Parent Poke"," " +dic.get('poke_name'),20,30)
+        if dic.get("is_child"):
+            display_key_and_value("Child Poke", " " +dic.get("poke_name"),20,30)
+        if dic.get("is_item_used") != None and dic.get("is_item_used") != 0:
+            display_key_and_value("Item used",dic.get("item_used"),20,30)
+        if dic.get("is_bred") != None and dic.get("is_bred") != 0:
+            display_key_and_value("","By breeding.",20,30)
+        if dic.get("is_evolve") != None and dic.get("is_evolve") != 0:
+            display_key_and_value("", "By evolution.",20,30)
+        if dic.get("is_traded") != None and dic.get("is_traded") != 0:
+            display_key_and_value("","By trading.",20,30)
+        if dic.get("additional_requirements") != 0 and dic.get("additional_requirements") != None and dic.get("additional_requirements") != "":
+            display_key_and_value("Additional reqs:",dic.get("additional_requirements"))
+        print("-" * 52)
+    print("No more associated evolutions")
 
 def display_pokemon_attacks(dic,pokemon_name):
     header = pokemon_name[0].upper() + pokemon_name[1:len(pokemon_name)].lower()
-    print(header + " Attacks\n")
+    header = header + " Attacks"
+    
+    print("{:^50}".format(header))
+    print("-" * 52)
     if dic.get("primary_att_name") != "":
-        display_key_and_value("Primary attack",dic.get("primary_att_name"))
+        display_key_and_value("Primary attack",dic.get("primary_att_name"),20,30)
         if dic.get("primary_att_damage") != None and str(dic.get("primary_att_damage")) != "" and dic.get("primary_att_damage") != 0:
-            display_key_and_value("Damage",str(dic.get("primary_att_damage")))
+            display_key_and_value("Damage",str(dic.get("primary_att_damage")),20,30)
         else:
-            display_key_and_value("No damage","see effect")
-        display_key_and_value("Targets",dic.get("primary_att_targets"))
-        display_key_and_value("Power points",dic.get("primary_att_pp"))
+            display_key_and_value("No damage","see effect",20,30)
+        display_key_and_value("Targets",dic.get("primary_att_targets"),20,30)
+        display_key_and_value("Power points",dic.get("primary_att_pp"),20,30)
         if dic.get("primary_att_accuracy") != None and dic.get("primary_att_accuracy")!=0 and str(dic.get("primary_att_accuracy"))!="":
-            display_key_and_value("Accuracy",dic.get("primary_att_accuracy"))
+            display_key_and_value("Accuracy",dic.get("primary_att_accuracy"),20,30)
         else:
-            display_key_and_value("No accuracy","See effect")
-        display_key_and_value("Effect",dic.get("primary_att_effect"))
+            display_key_and_value("No accuracy","See effect",20,30)
+        display_key_and_value("Effect",dic.get("primary_att_effect"),20,30)
     else:
         print("No primary attack found.")
     print("\n")
     if dic.get("secondary_att_name") != "":
-        display_key_and_value("Secondary attack",dic.get("secondary_att_name"))
+        display_key_and_value("Secondary attack",dic.get("secondary_att_name"),20,30)
         if dic.get("secondary_att_damage") != None and str(dic.get("secondary_att_damage")) != "" and dic.get("secondary_att_damage") != 0:
-            display_key_and_value("Damage",str(dic.get("secondary_att_damage")))
+            display_key_and_value("Damage",str(dic.get("secondary_att_damage")),20,30)
         else:
-            display_key_and_value("No damage","See effect")
-        display_key_and_value("Targets",dic.get("secondary_att_targets"))
-        display_key_and_value("Power points",dic.get("secondary_att_pp"))
+            display_key_and_value("No damage","See effect",20,30)
+        display_key_and_value("Targets",dic.get("secondary_att_targets"),20,30)
+        display_key_and_value("Power points",dic.get("secondary_att_pp"),20,30)
         if dic.get("secondary_att_accuracy") != None and dic.get("secondary_att_accuracy")!=0 and str(dic.get("secondary_att_accuracy"))!="":
-            display_key_and_value("Accuracy",dic.get("secondary_att_accuracy"))
+            display_key_and_value("Accuracy",dic.get("secondary_att_accuracy"),20,30)
         else:
-            display_key_and_value("No accuracy","See effect")
-        display_key_and_value("Effect",dic.get("secondary_att_effect"))
+            display_key_and_value("No accuracy","See effect",20,30)
+        display_key_and_value("Effect",dic.get("secondary_att_effect"),20,30)
     else:
         print("No secondary attack found.")
 

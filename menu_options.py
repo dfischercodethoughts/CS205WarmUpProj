@@ -91,41 +91,44 @@ def select_pokemon_evolutions(pokemon):
     #want evolution information for a specific pokemon
     #result has format:
         # poke name, child pokemon, (int 0/1) evolved, item_used, (str) item, (int 0/1) traded, bred, (str) notes
-    parent_sql = "select pokemon.name, evolutions.child_poke, evolutions.evolved, evolutions.item_used, evolutions.item,evolutions.traded, evolutions.bred, evolutions.notes"
-    parent_sql += " from pokemon left join evolutions on evolutions.parent_poke = pokemon.name where pokemon.name = '" + \
+    child_sql = "select pokemon.name, evolutions.child_poke, evolutions.evolved, evolutions.item_used, evolutions.item,evolutions.traded, evolutions.bred, evolutions.notes"
+    child_sql += " from pokemon inner join evolutions on evolutions.parent_poke = pokemon.name where pokemon.name = '" + \
                   pokemon.lower() + "';"
-    parent_results = execute(parent_sql)
-    child_sql = 'select pokemon.name, evolutions.child_poke, evolutions.evolved, evolutions.item_used, evolutions.item,evolutions.traded, evolutions.bred, evolutions.notes'
-    child_sql += ' from pokemon left join evolutions on evolutions.child_poke = pokemon.name where pokemon.name = "' + \
-                 pokemon.lower() + '";'
     child_results = execute(child_sql)
+    parent_sql = 'select pokemon.name, evolutions.child_poke, evolutions.evolved, evolutions.item_used, evolutions.item,evolutions.traded, evolutions.bred, evolutions.notes'
+    parent_sql += ' from pokemon inner join evolutions on evolutions.child_poke = pokemon.name where pokemon.name = "' + \
+                 pokemon.lower() + '";'
+    parent_results = execute(parent_sql)
 
     # returns list of dictionaries with keys and values
+    dict_to_return = {}
     list_of_dics = []
-
+    #print("parents")
     for parent in parent_results:
-        dict_to_return['parent_poke_name'] = parent[0]
-        dict_to_return['parent_additional_requirements'] = parent[7]
-        dict_to_return['is_transformed'] = parent[3]
-        dict_to_return['parent_item'] = parent[4]
-        dict_to_return['is_bred_from_parent'] = parent[6]
-        dict_to_return['is_evolved'] = parent[2]
-        dict_to_return['parent_traded'] = parent[5]
+        #print(parent)
+        dict_to_return['poke_name'] = parent[0]
+        dict_to_return['additional_requirements'] = parent[7]
+        dict_to_return['is_item_used'] = parent[3]
+        dict_to_return['item_used'] = parent[4]
+        dict_to_return['is_bred'] = parent[6]
+        dict_to_return['is_evolve'] = parent[2]
+        dict_to_return['is_traded'] = parent[5]
         dict_to_return['is_parent'] = True
         list_of_dics.append(dict_to_return)
         
-
+    #print("children")
     for child in child_results:
-        dict_to_return['child_poke_name'] = child[1]
-        dict_to_return['child_additional_requirements'] = child[7]
-        dict_to_return['can_be_transformed'] = child[3]
+        #print(child)
+        dict_to_return['poke_name'] = child[1]
+        dict_to_return['additional_requirements'] = child[7]
+        dict_to_return['is_item_used'] = child[3]
         dict_to_return['item_used'] = child[4]
-        dict_to_return['can_be_bred'] = child[6]
-        dict_to_return['evolves'] = child[2]
-        dict_to_return['trade_to_evolve'] = child[5]
+        dict_to_return['is_bred'] = child[6]
+        dict_to_return['is_evolve'] = child[2]
+        dict_to_return['is_traded'] = child[5]
         dict_to_return['is_child'] = True
         list_of_dics.append(dict_to_return)
-
+    #print(list_of_dics)
     return list_of_dics
 
 def select_all_pokemon():
