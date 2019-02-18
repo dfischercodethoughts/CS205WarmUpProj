@@ -113,43 +113,33 @@ def select_pokemon_evolutions(pokemon):
                  pokemon.lower() + '";'
     child_results = execute(child_sql)
 
-    # returns dictionary with keys and values
-    dict_to_return = {
-        'parent_poke_name': "",
-        'child_poke_name': "",
-        'is_transformed': 0,
-        'parent_item': "",
-        'is_evolved': 0,
-        'evolves': 0,
-        'can_be_transformed': 0,
-        'item_used': "",
-        'can_be_bred': 0,
-        'is_bred_from_parent': 0,
-        'parent_traded': 0,
-        'trade_to_evolve': 0,
-        'parent_additional_requirements': "",
-        'child_additional_requirements': ""
-    }
+    # returns list of dictionaries with keys and values
+    list_of_dics = []
 
-    if parent_results:
-        dict_to_return['parent_poke_name'] = parent_results[0][0]
-        dict_to_return['parent_additional_requirements'] = parent_results[0][7]
-        dict_to_return['is_transformed'] = parent_results[0][3]
-        dict_to_return['parent_item'] = parent_results[0][4]
-        dict_to_return['is_bred_from_parent'] = parent_results[0][6]
-        dict_to_return['is_evolved'] = parent_results[0][2]
-        dict_to_return['parent_traded'] = parent_results[0][5]
+    for parent in parent_results:
+        dict_to_return['parent_poke_name'] = parent[0]
+        dict_to_return['parent_additional_requirements'] = parent[7]
+        dict_to_return['is_transformed'] = parent[3]
+        dict_to_return['parent_item'] = parent[4]
+        dict_to_return['is_bred_from_parent'] = parent[6]
+        dict_to_return['is_evolved'] = parent[2]
+        dict_to_return['parent_traded'] = parent[5]
+        dict_to_return['is_parent'] = True
+        list_of_dics.append(dict_to_return)
+        
 
-    if child_results:
-        dict_to_return['child_poke_name'] = child_results[0][1]
-        dict_to_return['child_additional_requirements'] = child_results[0][7]
-        dict_to_return['can_be_transformed'] = child_results[0][3]
-        dict_to_return['item_used'] = child_results[0][4]
-        dict_to_return['can_be_bred'] = child_results[0][6]
-        dict_to_return['evolves'] = child_results[0][2]
-        dict_to_return['trade_to_evolve'] = child_results[0][5]
+    for child in child_results:
+        dict_to_return['child_poke_name'] = child[1]
+        dict_to_return['child_additional_requirements'] = child[7]
+        dict_to_return['can_be_transformed'] = child[3]
+        dict_to_return['item_used'] = child[4]
+        dict_to_return['can_be_bred'] = child[6]
+        dict_to_return['evolves'] = child[2]
+        dict_to_return['trade_to_evolve'] = child[5]
+        dict_to_return['is_child'] = True
+        list_of_dics.append(dict_to_return)
 
-    return dict_to_return
+    return list_of_dics
 
 
 def select_pokemon_locations(pokemon):
