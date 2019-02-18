@@ -1,9 +1,12 @@
 import menu_options
 
-def display_key_and_value(key,value):
-    if value != "":
+def display_key_and_value(key,value,left_size=25,right_size=25):
+    if value != "" and value != 0:
+        if value == None:
+            value = ""
         new_key = key[0].upper() + key[1:len(key)].lower()
-        return_str = "|{:>25}:{:<25}|".format(new_key,value)
+        return_str = "|{:>" + str(left_size) + "}:{:<" + str(right_size) + "}|"
+        return_str = return_str.format(new_key,value)
         print(return_str)
         return True
     return False
@@ -24,7 +27,7 @@ def display_pokemon(dictionary):
     print(first_last_str)
 
 def display_pokemon_attacks(dic,pokemon_name):
-    header = pokemon_name[0].upper() + pokemon_name[1:-1].lower()
+    header = pokemon_name[0].upper() + pokemon_name[1:len(pokemon_name)].lower()
     print(header + " Attacks\n")
     if dic.get("primary_att_name") != "":
         display_key_and_value("Primary attack",dic.get("primary_att_name"))
@@ -102,14 +105,13 @@ def list_table(table_name):
         results = menu_options.execute(sql)
         if results:
             print("LOCATIONS")
-            print("-"*20)
-            header_str = "\n|{:^10}|".format("name")
-            header_str += "{:^20}|\n".format("description")
+            print("-"*51)
+            header_str = "\n|{:^25}:".format("name")
+            header_str += "{:^30}|\n".format("description")
             print(header_str)
             for location in results:
-                row = "|{:>10}|".format(location[0][0])
-                row += "{:>20}|".format(location[0][1])
-                print(row)
+                display_key_and_value(location[0],location[1],25,30)
+                
         else:
             raise validate.Input_error("No locations. Perhaps the db has not been set up yet.")
     
