@@ -31,8 +31,8 @@ def select_pokemon(pokemon):
     #returns dictionary with keys and values
     dict_to_return = {
             'name': results[0][0],
-            'type_1': results[0][1],
-            'type_2': results[0][2],
+            'type1': results[0][1],
+            'type2': results[0][2],
             'hp': results[0][3],
             'primary_attack': results[0][4],
             'secondary_attack': results[0][5],
@@ -44,32 +44,54 @@ def select_pokemon(pokemon):
 #Want to return dictionary of attacks based on pokemon that is typed in
 def select_pokemon_attacks(pokemon):
     # input pokemon_name attacks to get attack info for a specific pokemon
-    sql = "select attacks.name, attacks.damage,attacks.effects,attacks.targets,attacks.power_points,attacks.accuracy"
+    sql = "select attacks.name, attacks.damage,attacks.effect,attacks.targets,attacks.power_points,attacks.accuracy"
     sql += ", attacks.location_name, attacks from attacks left join pokemon on pokemon.primary_attack = attacks.name where pokemon.name = '" + \
            pokemon.lower() + "';"
-
-    #primary_att_results = execute(sql)
-    sql = "select * from attacks left join pokemon on pokemon.secondary_attack = attacks.name where pokemon.name = '" + \
-          pokemon.lower() + "';"
-
-    #secondary_att_results = execute(sql)
-    sql = "select * from pokemon left join location_reference on location_reference.pokemon_name = pokemon.name where pokemon.name = '" + \
-          pokemon.lower() + "';"
-
-    results = execute(sql)
+    primary_att_results = execute(sql)
+    
+    sql = "select attacks.name, attacks.damage,attacks.effect,attacks.targets,attacks.power_points,attacks.accuracy"
+    sql += ", attacks.location_name, attacks from attacks left join pokemon on pokemon.secondary_attack = attacks.name where pokemon.name = '" + \
+           pokemon.lower() + "';"
+    secondary_att_results = execute(sql)
 
     #returns dictionary with keys and values
-    dict_to_return = {
-        'name': results[0][0],
-        'damage': results[0][1],
-        'effects': results[0][2],
-        'targets': results[0][3],
-        'power_points': results[0][4],
-        'accuracy': results[0][5],
-        'location_name': results[0][6],
-        'primary attack': results[0][7],
-        'secondary_attack': results[0][8]
-        }
+    
+    if primary_att_results:
+        dict_to_return = {
+            'primary_att_name': primary_att_results[0][0],
+            'primary_att_damage': primary_att_results[0][1],
+            'primary_att_effect': primary_att_results[0][2],
+            'primary_att_targets': primary_att_results[0][3],
+            'primary_att_pp': primary_att_results[0][4],
+            'primary_att_acc': primary_att_results[0][5],
+            'primary_att_location': primary_att_results[0][6]
+            }
+    else:
+        dict_to_return = {
+            'primary_att_name': "",
+            'primary_att_damage': 0,
+            'primary_att_effect': "",
+            'primary_att_targets': "",
+            'primary_att_pp':0,
+            'primary_att_acc':0,
+            'primary_att_location': ""
+            }
+    if secondary_att_results:
+        dict_to_return['secondary_att_name'] = secondary_att_results[0][0]
+        dict_to_return['secondary_att_damage'] = secondary_att_results[0][1]
+        dict_to_return['secondary_att_effect'] = secondary_att_results[0][2]
+        dict_to_return['secondary_att_targets'] = secondary_att_results[0][3]
+        dict_to_return['secondary_att_pp'] = secondary_att_results[0][4]
+        dict_to_return['secondary_att_acc'] = secondary_att_results[0][5]
+        dict_to_return['secondary_att_location'] = secondary_att_results[0][6]
+    else:
+        dict_to_return['secondary_att_name'] = ''
+        dict_to_return['secondary_att_damage'] = 0
+        dict_to_return['secondary_att_effect'] = ''
+        dict_to_return['secondary_att_targets'] = ''
+        dict_to_return['secondary_att_pp'] = 0
+        dict_to_return['secondary_att_acc'] = 0
+        dict_to_return['secondary_att_location'] = ''
     return dict_to_return
 
 
@@ -124,6 +146,28 @@ def select_pokemon_evolutions(pokemon):
 
     return dict_to_return
 
+def select_all_pokemon():
+    sql = "select name, hp,type1, type2, primary_attack,secondary_attack, evolution_level from pokemon;"
+    results = execute(sql)
+    list_to_ret = []
+    
+    for pokemon in results:
+        dic = {}
+        dic['name'] = pokemon[0]
+        dic['hp'] = pokemon[1]
+        dic['type1'] = pokemon[2]
+        dic['type2'] = pokemon[3]
+        dic['primary_attack'] = pokemon[4]
+        dic['secondary_attack'] = pokemon[5]
+        dic['evolution_level'] = pokemon[6]
+        list_to_ret.append(dic)
+    return list_to_ret
 
 def select_pokemon_locations(pokemon):
-    sql = 'select location'
+    sql = 'select location_name from location_reference where pokemon_name = "' + pokemon + '";'
+    results = execute(sql)
+    to_return = []
+    for location in results:
+        to_return.append(location)
+    return to_return
+    

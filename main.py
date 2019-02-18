@@ -11,26 +11,6 @@ import validate
 import menu_options
 import display
 
-# def execute(string):
-#     #assumes properly formatted input
-#     print("\nExecuting: " + string)
-#     con = low_level.open_db(DATABASE_NAME)
-#     results =  low_level.execute_sql(string,con)
-#     con.close()
-#     print("Done.")
-#     return results
-#
-#
-# def display_results(results, type_of_output):
-#     #naive implementation simply prints out all results
-#     if results:
-#         for r in results:
-#             print(r)
-#     else:
-#         print("no results.")
-
-
-
 #INTERESTING POKEMON: MRMIME MIMEJR
 def main():
     print("Welcome to the PokeDB!")
@@ -49,7 +29,7 @@ def main():
                 validate.check_size(user_words)
                 count = 0
                 for word in user_words:
-                    user_words[count] = word.lower()
+                    user_words[count] = word.lower().strip()
                     count += 1
             else:
                 raise validate.Input_Error("Please enter 1-3 words: *pokemon_name* [table_name] eg. bulbasaur attacks.")
@@ -66,119 +46,38 @@ def main():
             elif validate.check_in_pokemon(user_words[0].lower()):
                 #switch on second word
                 if len(user_words) == 1:
-                    #input just pokemon name; want information on that pokemon
-                    sql = "select name, type1,type2,hp,primary_attack,secondary_attack,evolution_level from pokemon where name = '" + user_words[0].lower() + "';"
-                    results = execute(sql)
-                    if results:
-                        print("Name: " + results[0][0]+'\n')
-                        print('\tType 1: ' + results[0][1])
-                        if (results[0][2] != ""):
-                            print("\tType 2: " + results[0][2])
-                        print("\tHealth: " + str(results[0][3]))
-                        print("\tAttack 1: " + results[0][4])
-                        if (results[0][5] != ""):
-                            print("\tAttack 2: " + results[0][5])
-                        if (results[0][6] != 0):
-                            print("\tEvolves at level " + str(results[0][6]))
-                        else:
-                            print("\tDoes not evolve")
-
-
-                    else:
-                        raise validate.Input_Error("Something went wrong. Please try again.")
+                    #input just pokemon name; want information on just that pokemon
+                    results = menu_options.select_pokemon(user_words[0].lower())
+                    display.display_pokemon(results)
+                    
                 #if input 2 words, the first of which is a pokemon name
                 elif len(user_words) == 2:
-                    print("The length of your input is two words.")
-                    # if user_words[1] == 'attacks':
-                    #     #input pokemon_name attacks to get attack info for a specific pokemon
-                    #     sql = "select attacks.name, attacks.damage,attacks.effects,attacks.targets,attacks.power_points,attacks.accuracy"
-                    #     sql += ", attacks.location_name, attacks from attacks left join pokemon on pokemon.primary_attack = attacks.name where pokemon.name = '" + user_words[0].lower() + "';"
-                    #     primary_att_results = execute(sql)
-                    #     sql = "select * from attacks left join pokemon on pokemon.secondary_attack = attacks.name where pokemon.name = '" + user_words[0].lower() + "';"
-                    #     secondary_att_results = execute(sql)
-                    #
-                    #     print("Attack information for " + user_words[0])
-                    #
-                    #     if primary_att_results:
-                    #         print("Primary attacks: ")
-                    #         display_results(primary_att_results,"")
-                    #     else:
-                    #         print("No information on primary attack.")
-                    #     if secondary_att_results:
-                    #         print("Secondary attacks: ")
-                    #         display_results(primary_att_results,"")
-                    #     else:
-                    #         print("No information on secondary attack.")
-                    #
-                    # elif user_words[1] == 'locations':
-                    #     #wants location information on a given pokemon
-                    #     sql = "select * from pokemon left join location_reference on location_reference.pokemon_name = pokemon.name where pokemon.name = '" + user_words[0].lower() + "';"
-                    #     results = execute(sql)
-                    #     if results:
-                    #         print("Results: ")
-                    #         print(results)
-                    #     else:
-                    #         raise validate.Input_Error("Something went wrong. No results. Please try again.")
-                    
-        #             elif user_words[1] == 'evolutions':
-        #                 #want evolution information for a specific pokemon
-        #                 #result has format:
-        #                     #poke name, child pokemon, (int 0/1) evolved, item_used, (str) item, (int 0/1) traded, bred, (str) notes
-        #                 parent_sql = "select pokemon.name, evolutions.child_poke, evolutions.evolved, evolutions.item_used, evolutions.item,evolutions.traded, evolutions.bred, evolutions.notes"
-        #                 parent_sql += " from pokemon left join evolutions on evolutions.parent_poke = pokemon.name where pokemon.name = '" + user_words[0] + "';"
-        #                 parent_results = execute(parent_sql)
-        #                 child_sql = 'select pokemon.name, evolutions.child_poke, evolutions.evolved, evolutions.item_used, evolutions.item,evolutions.traded, evolutions.bred, evolutions.notes'
-        #                 child_sql += ' from pokemon left join evolutions on evolutions.child_poke = pokemon.name where pokemon.name = "' + user_words[0] + '";'
-        #                 child_results = execute(child_sql)
-        #                 if child_results:
-        #                     #print(child_results)
-        #                     #print(len(child_results))
-        #                     #print(child_results[0][1])
-        #                     if child_results[0][2] == 1:
-        #                         print(user_words[0] + " evolves from " + child_results[0][1])
-        #                     elif child_results[0][3] == 1:
-        #                         print(user_words[0] + " can be transformed from " + child_results[0][1] + " using: " + child_results[0][4])
-        #                     elif child_results[0][5] == 1:
-        #                         result_str = user_words[0] + " evolves from " + child_results[0][1] + " after trading"
-        #                         if child_results[0][7] != "":
-        #                             result_str += ", with additional requirements: " + child_results[0][7]
-        #                         print(result_str)
-        #
-        #                     elif child_results[0][6] == 1:
-        #                         print(user_words[0] + " can be bred from " + child_results[0][1])
-        #                 else:
-        #                     print(user_words[0] + " has no parents.")
-        #
-        #                 if parent_results:
-        #                     #print(parent_results)
-        #                     if parent_results[0][2] == 1:
-        #                         print(user_words[0] + " evolves into " + parent_results[0][1])
-        #                     elif parent_results[0][3] == 1:
-        #                         print(user_words[0] + " can be transformed into " + parent_results[0][1] + " using: " + parent_results[0][4])
-        #                     elif parent_results[0][5] == 1:
-        #                         result_str = user_words[0] + " can be traded to evolve into " + parent_results[0][1]
-        #                         if parent_results[0][7] != "":
-        #                             result_str += ", with additional requirements: " + parent_results[0][7]
-        #                         print(result_str)
-        #
-        #                     elif child_results[0][6] == 1:
-        #                         print(user_words[0] + " can be bred into " + parent_results[0][1])
-        #
-        #                 else:
-        #                     print(user_words[0] + " has no parents.")
-        #
-        #
-    
+                    validate.check_table_name(user_words[1].lower())
+                    if user_words[1].lower() == 'attacks':
+                        results = menu_options.select_pokemon_attacks(user_words[0])
+                        display.display_pokemon_attacks(results,user_words[0])
+                    elif user_words[1].lower() == 'location' or user_words[1].lower == 'locations':
+                        results = menu_options.select_pokemon_locations(user_words[0])
+                        display.display_pokemon_locations(results,user_words[0])
+                    elif user_words[1].lower() == 'evolutions' or user_words[1].lower() == 'evolution':
+                        results = menu_options.select_pokemon_evolutions(user_words[0])
+                        display.display_pokemon_evolutions(results,user_words[0])
+                else:
+                    print("\nWhen searching for pokemon attributes, please enter the pokemon name followed by the attribute name.")
+            
 
             elif (validate.check_in_locations(user_words[0].lower())):
-                #searching for all pokemon in a given location
-                results = select_pokemon_from_location(user_words[0].lower())
-                display_pokemon_in_location(results)
+                if len(user_words) == 1:
+                    #searching for all pokemon in a given location
+                    results = menu_options.select_pokemon_from_location(user_words[0].lower())
+                    display.display_pokemon_in_location(results)
+                else:
+                    print("If searching for all pokemon that can be found in a certain location, please just enter the location name.")
 
             else:
                 err_msg = "Sorry, that is incorrect input.\n"
                 err_msg += "Tables are attacks/locations/evolutions/pokemon.\n"
-                err_msg += "options in '||' are optional.\n"
+                err_msg += "options in '|...|' are optional:"
                 err_msg += "\nPlease input either 'list [table]', '[pokemon_name] |[table_name]|', or '[location_name]'."
                 raise validate.Input_Error(err_msg)
 
