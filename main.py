@@ -9,6 +9,7 @@ import sys
 import low_level
 import validate
 import menu_options
+import display
 
 # def execute(string):
 #     #assumes properly formatted input
@@ -29,13 +30,6 @@ import menu_options
 #         print("no results.")
 
 
-def sanitize(to_remove):
-    sanitized = to_remove.replace("!","").replace("@"."").replace("#","").replace("$"."").replace("%","").replace("^"."").replace("&","").replace("*"."").replace("(","").replace(")"."")
-    sanitized = sanitized.replace("-","").replace("="."").replace("+","").replace("["."").replace("{","").replace("}"."").replace("]","").replace("\\"."").replace("|","").replace(":"."")
-    sanitized = sanitized.replace("<","").replace(","."").replace(">","").replace("."."").replace("?","").replace("/"."").replace("'","").replace('"'."").replace(";","")
-    return sanitized
-
-
 
 #INTERESTING POKEMON: MRMIME MIMEJR
 def main():
@@ -50,7 +44,7 @@ def main():
             #print("you input " + user_raw)
 
             if isinstance(user_raw,str):
-                validate.has_special_chars(user_raw) or validate.check_in_locations(user_raw.lower())
+                user_raw = validate.sanitize(user_raw)
                 user_words = user_raw.split(' ' )
                 validate.check_size(user_words)
                 count = 0
@@ -59,20 +53,14 @@ def main():
                     count += 1
             else:
                 raise validate.Input_Error("Please enter 1-3 words: *pokemon_name* [table_name] eg. bulbasaur attacks.")
-
             if "exit" in user_words:
                 break
             if user_words[0].lower() == 'list':
                 if len(user_words) == 2:
                     
                     validate.check_table_name(user_words[1].lower())
-                    sql = "select * from " + user_words[1].lower() + ";"
-                    results = execute(sql)
-                    if results:
-                        for r in results:
-                            print(r)
-                    else:
-                        raise validate.Input_Error("something went wrong")
+                    display.list_table(user_words[1].lower())
+                    
                 else:
                     raise validate.Input_Error("Please input 'list' followed by a table name: attacks locations pokemon or evolutions.")
             elif validate.check_in_pokemon(user_words[0].lower()):
@@ -197,18 +185,6 @@ def main():
         except validate.Input_Error as e:
             print(e.msg)
 
-def select_pokemon_from_location(location_name):
-
-
-def remove_special_chars(to_remove):
-    #DOES NOT SANITIZE UNDERSCORES
-    sanitized = to_remove.replace("!","").replace("@","").replace("#","").replace("$","").replace("%","").replace("^","").replace("&","")
-    sanitized = sanitized.replace("*", "").replace("(", "").replace(")", "").replace("-", "").replace("=", "")
-    sanitized = sanitized.replace("+", "").replace("[", "").replace("{", "").replace("}", "").replace("]", "")
-    sanitized = sanitized.replace("\\", "").replace("|", "").replace(";", "").replace(":", "").replace("'", "")
-    sanitized = sanitized.replace('"', "").replace("<", "").replace(",", "").replace(".", "").replace(">", "")
-    sanitized = sanitized.replace("/", "").replace("?", "").replace("~", "").replace("`", "")
-    return sanitized
 
 if __name__ == '__main__':
    # init_pokedb()

@@ -9,6 +9,11 @@ class Input_Error(Exception):
 
     print(msg)
 
+def sanitize(to_remove):
+    sanitized = to_remove.replace("!","").replace("@","").replace("#","").replace("$","").replace("%","").replace("^","").replace("&","").replace("*","").replace("(","").replace(")","")
+    sanitized = sanitized.replace("-","").replace("=","").replace("+","").replace("[","").replace("{","").replace("}","").replace("]","").replace("\\","").replace("|","").replace(":","")
+    sanitized = sanitized.replace("<","").replace(",","").replace(">","").replace(".","").replace("?","").replace("/","").replace("'","").replace('"',"").replace(";","")
+    return sanitized
 
 def check_in_pokemon(word):
     con = low_level.open_db('pokedb.db')
