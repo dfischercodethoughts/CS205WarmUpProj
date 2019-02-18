@@ -45,31 +45,58 @@ def select_pokemon(pokemon):
 def select_pokemon_attacks(pokemon):
     # input pokemon_name attacks to get attack info for a specific pokemon
     sql = "select attacks.name, attacks.damage,attacks.effects,attacks.targets,attacks.power_points,attacks.accuracy"
-    sql += ", attacks.location_name, attacks from attacks left join pokemon on pokemon.primary_attack = attacks.name where pokemon.name = '" + \
+    sql += ", attacks.location_name from attacks left join pokemon on pokemon.primary_attack = attacks.name where pokemon.name = '" + \
            pokemon.lower() + "';"
 
-    #primary_att_results = execute(sql)
-    sql = "select * from attacks left join pokemon on pokemon.secondary_attack = attacks.name where pokemon.name = '" + \
+    primary_att_results = execute(sql)
+    sql = "select attacks.name, attacks.damage,attacks.effects,attacks.targets,attacks.power_points,attacks.accuracy"
+    sql += ", attacks.location_name from attacks left join pokemon on pokemon.secondary_attack = attacks.name where pokemon.name = '" + \
           pokemon.lower() + "';"
 
-    #secondary_att_results = execute(sql)
-    sql = "select * from pokemon left join location_reference on location_reference.pokemon_name = pokemon.name where pokemon.name = '" + \
-          pokemon.lower() + "';"
+    secondary_att_results = execute(sql)
+    #sql = "select * from pokemon left join location_reference on location_reference.pokemon_name = pokemon.name where pokemon.name = '" + \
+    #      pokemon.lower() + "';"
 
-    results = execute(sql)
+    #results = execute(sql)
 
     #returns dictionary with keys and values
-    dict_to_return = {
-        'name': results[0][0],
-        'damage': results[0][1],
-        'effects': results[0][2],
-        'targets': results[0][3],
-        'power_points': results[0][4],
-        'accuracy': results[0][5],
-        'location_name': results[0][6],
-        'primary attack': results[0][7],
-        'secondary_attack': results[0][8]
-        }
+    if primary_att_results[0][0] != "":
+        dict_to_return = {
+            'primary_att_name': results[0][0],
+            'primary_att_damage': results[0][1],
+            'primary_att_effects': results[0][2],
+            'primary_att_targets': results[0][3],
+            'primary_att_pp': results[0][4],
+            'primary_att_accuracy': results[0][5],
+            'primary_att_location': results[0][6]
+            }
+    else:
+        dict_to_return = {
+            'primary_att_name': "",
+            'primary_att_damage':0,
+            'primary_att_effects': "",
+            'primary_att_targets': "",
+            'primary_att_pp': 0,
+            'primary_att_accuracy': 0,
+            'primary_att_location': ""
+            }
+    if primary_att_results[0][0] != "":
+        dict_to_return['secondary_att_name'] = results[0][0]
+        dict_to_return['secondary_att_damage'] = results[0][1]
+        dict_to_return['secondary_att_effects'] = results[0][2]
+        dict_to_return['secondary_att_targets'] = results[0][3]
+        dict_to_return['secondary_att_pp'] = results[0][4]
+        dict_to_return['secondary_att_accuracy'] = results[0][5]
+        dict_to_return['secondary_att_location'] = results[0][6]
+    else:
+        dict_to_return['secondary_att_name'] = ""
+        dict_to_return['secondary_att_damage'] = 0
+        dict_to_return['secondary_att_effects'] = ''
+        dict_to_return['secondary_att_targets'] = ''
+        dict_to_return['secondary_att_pp'] = 0
+        dict_to_return['secondary_att_accuracy'] = 0
+        dict_to_return['secondary_att_location'] = ''
+    
     return dict_to_return
 
 
