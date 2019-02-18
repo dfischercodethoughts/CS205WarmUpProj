@@ -15,16 +15,6 @@ def execute(string):
     print("Done.")
     return results
 
-
-def display_results(results, type_of_output):
-    #naive implementation simply prints out all results
-    if results:
-        for r in results:
-            print(r)
-    else:
-        print("no results.")
-
-
 def select_pokemon(pokemon):
     sql = 'select name, type1, type2, hp,primary_attack,secondary_attack,evolution_level from pokemon where name = "' + pokemon.lower() + '";'
     results = execute(sql)
@@ -45,12 +35,12 @@ def select_pokemon(pokemon):
 def select_pokemon_attacks(pokemon):
     # input pokemon_name attacks to get attack info for a specific pokemon
     sql = "select attacks.name, attacks.damage,attacks.effect,attacks.targets,attacks.power_points,attacks.accuracy"
-    sql += ", attacks.location_name, attacks from attacks left join pokemon on pokemon.primary_attack = attacks.name where pokemon.name = '" + \
+    sql += ", attacks.location_name from attacks left join pokemon on pokemon.primary_attack = attacks.name where pokemon.name = '" + \
            pokemon.lower() + "';"
     primary_att_results = execute(sql)
     
     sql = "select attacks.name, attacks.damage,attacks.effect,attacks.targets,attacks.power_points,attacks.accuracy"
-    sql += ", attacks.location_name, attacks from attacks left join pokemon on pokemon.secondary_attack = attacks.name where pokemon.name = '" + \
+    sql += ", attacks.location_name from attacks left join pokemon on pokemon.secondary_attack = attacks.name where pokemon.name = '" + \
            pokemon.lower() + "';"
     secondary_att_results = execute(sql)
 
@@ -70,7 +60,7 @@ def select_pokemon_attacks(pokemon):
         dict_to_return = {
             'primary_att_name': "",
             'primary_att_damage':0,
-            'primary_att_effects': "",
+            'primary_att_effect': "",
             'primary_att_targets': "",
             'primary_att_pp': 0,
             'primary_att_accuracy': 0,
