@@ -17,9 +17,21 @@ def display_pokemon(dictionary):
     if dictionary.get("evolution_level") != 0:
         display_key_and_value("evolves at level",dictionary.get("evolution_level"))
 
-def display_attack(dictionary):
-    display_key_and_value
-
+def display_attack(dic):
+    display_key_and_value("name",dic.get("name"))
+    display_key_and_value("damage",str(dic.get("damage")))
+    display_key_and_value("effects",dic.get("effects"))
+    display_key_and_value("targets",dic.get("targets"))
+    display_key_and_value("power Points",str(dic.get("power_points")))
+    display_key_and_value("% Accuracy",str(dic.get("accuracy")))
+    if dic.get("location_name") !="":
+        display_key_and_value("locations found",dic.get("location_name"))
+    display_key_and_value("primary attack",dic.get("primary_attack"))
+    if dic.get("secondary_attack")!= "":
+        display_key_and_value("secondary attack",dic.get("secondary_attack"))
+    else:
+        display_key_and_value("secondary attack","no secondary attack")
+    
 def list_table(table_name):
     table_name = table_name.lower()
     to_return = {}
