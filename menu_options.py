@@ -4,7 +4,7 @@ import low_level
 import validate
 
 
-user_words = " "
+user_words = ""
 
 def execute(string):
     #assumes properly formatted input
@@ -26,8 +26,8 @@ def display_results(results, type_of_output):
 
 
 def select_pokemon(pokemon):
-    sql = 'select name, type1, type2, hp,primary_attack,secondary_attack,evolution from pokemon where name = "' + pokemon.lower() + '";'
-    results = low_level.execute_sql(sql)
+    sql = 'select name, type1, type2, hp,primary_attack,secondary_attack,evolution_level from pokemon where name = "' + pokemon.lower() + '";'
+    results = execute(sql)
     #returns dictionary with keys and values
     dict_to_return = {
             'name': results[0][0],

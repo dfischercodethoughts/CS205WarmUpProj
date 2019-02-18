@@ -1,7 +1,28 @@
 import menu_options
 
+def display_key_and_value(key,value):
+    new_key = key[0].upper() + key[1:len(key)].lower()
+    return_str = "|{:<5}:{:^5}|".format(new_key,value)
+    print(return_str)
+    return return_str
+
+def display_pokemon(dictionary):
+    display_key_and_value("name",dictionary.get("name"))
+    display_key_and_value("type 1",dictionary.get("type_1"))
+    if dictionary.get("type_2") != "":
+        display_key_and_value("type 2",dictionary.get("type_2"))
+    display_key_and_value("Health",dictionary.get("hp"))
+    display_key_and_value("primary attack",dictionary.get("primary_attack"))
+    display_key_and_value("secondary attack",dictionary.get("secondary_attack"))
+    if dictionary.get("evolution_level") != 0:
+        display_key_and_value("evolves at level",dictionary.get("evolution_level"))
+
+def display_attack(dictionary):
+    display_key_and_value
+
 def list_table(table_name):
-    to_return= {}
+    table_name = table_name.lower()
+    to_return = {}
     if table_name == "attacks":
         sql = 'select name, damage, effect, targets, power_points, accuracy, location_name from attacks;'
         results = menu_options.execute(sql)
