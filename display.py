@@ -7,6 +7,9 @@ def display_key_and_value(key,value):
     return return_str
 
 def display_pokemon(dictionary):
+    if dictionary.get("name") == "":
+        print("\nNo pokemon found.\n")
+        return
     display_key_and_value("name",dictionary.get("name"))
     display_key_and_value("type 1",dictionary.get("type_1"))
     if dictionary.get("type_2") != "":
@@ -18,6 +21,9 @@ def display_pokemon(dictionary):
         display_key_and_value("evolves at level",dictionary.get("evolution_level"))
 
 def display_attack(dic):
+    if dic.get("name") == "":
+        print("No attacks found.")
+        return
     display_key_and_value("name",dic.get("name"))
     display_key_and_value("damage",str(dic.get("damage")))
     display_key_and_value("effects",dic.get("effects"))
@@ -31,6 +37,70 @@ def display_attack(dic):
         display_key_and_value("secondary attack",dic.get("secondary_attack"))
     else:
         display_key_and_value("secondary attack","no secondary attack")
+
+def display_pokemon_attacks(dic):
+    if dic.get("primary_att_name") == "":
+        print("Something went wrong. No primary attack found.")
+    else:
+        print("Primary Attack")
+        display_key_and_value("name",dic.get("primary_att_name"))
+        display_key_and_value("damage",str(dic.get("primary_att_damage")))
+        display_key_and_value("effects",dic.get("primary_att_effects"))
+        display_key_and_value("targets",dic.get("primary_att_targets"))
+        display_key_and_value("power Points",str(dic.get("primary_att_pp")))
+        display_key_and_value("% Accuracy",str(dic.get("primary_att_accuracy")))
+        if dic.get("primary_att_location") !="":
+            display_key_and_value("locations found",dic.get("primary_att_location"))
+        
+
+    if dic.get("secondary_att_name") == "":
+        print("No secondary attack found.")
+    else:
+        print("Secondary Attack")
+        display_key_and_value("name",dic.get("secondary_att_name"))
+        display_key_and_value("damage",str(dic.get("secondary_att_damage")))
+        display_key_and_value("effects",dic.get("secondary_att_effects"))
+        display_key_and_value("targets",dic.get("secondary_att_targets"))
+        display_key_and_value("power Points",str(dic.get("secondary_att_pp")))
+        display_key_and_value("% Accuracy",str(dic.get("secondary_att_accuracy")))
+        if dic.get("secondary_att_location") !="":
+            display_key_and_value("locations found",dic.get("primary_att_location_name"))
+
+
+def display_pokemon_evolutions(list_of_dics):
+    for dic in list_of_dics:
+        if dic.get("is_parent"):
+            print("\nParent Pokemon\n")
+            str_to_print = dic.get("parent_poke_name") + ": "
+            if dic.get("is_transformed") == 1:
+                str_to_print += " Can be transformed "
+                str_to_print += "using " + dic.get("parent_item") + "."
+            if dic.get("is_bred_from_parent") == 1:
+                str_to_print += " Can be bred."
+            if dic.get("parent_traded") == 1:
+                str_to_print += " Can be traded."
+            if dic.get("is_evolved"):
+                str_to_print += " Can be evolved."
+            if dic.get("parent_additional_requirements") != "":
+                str_to_print += "\nAdditional requirements: " + dic.get("parent_additional_requirements") + "\n"
+        else:
+            print("\nChild Pokemon")
+            str_to_print = dic.get("child_poke_name") + " is obtainable:\n"
+            if dic.get("can_be_transformed") == 1:
+                
+                str_to_print += "\tBy using " + dic.get("item_used") + ".\n"
+            if dic.get("can_be_bred") == 1:
+                str_to_print += "\tBy breeding.\n"
+            if dic.get("trade_to_evolve") == 1:
+                str_to_print += "\tBy trading.\n"
+            if dic.get("evolves"):
+                str_to_print += "\tBy evolving.\n"
+            if dic.get("child_additional_requirements") != "":
+                str_to_print += "\tAdditional requirements: " + dic.get("child_additional_requirements") + "\n"
+                
+                
+            
+        
     
 def list_table(table_name):
     table_name = table_name.lower()
@@ -84,24 +154,31 @@ def list_table(table_name):
         if results:
             print("POKEMON TABLE")
             print("-"*40)
-            header_str = "\n|{:^10}|\n".format("name")
-            header_str += "|{^:6}|".format("health")
-            header_str += "{^:10}|".format("type 1")
-            header_str += "{^:10}|\n".format("type 2")
-            header_str+= "|{^:10}|".format("primary attack")
-            header_str+= "{^:10}|".format("secondary attack")
-            header_str += "{^:12}|\n".format("evolve level")
+            header_str = "\n|{:^5}|\n".format("name")
+            header_str += "|{:^5}|".format("health")
+            header_str += "{:^5}|".format("type 1")
+            header_str += "{:^5}|\n".format("type 2")
+            header_str+= "|{:^5}|".format("primary attack")
+            header_str+= "{:^5}|".format("secondary attack")
+            header_str += "{:^5}|\n".format("evolve level")
             print(header_str)
             print("-"*20)
             
-            for attack in results:
-                row = "\n|{:>10}|\n".format(results[0][0])
-                row += "|{>:6}|".format(results[0][1])
-                row += "{>:10}|".format(results[0][2])
-                row += "{>:10}|\n".format(results[0][3])
-                row += "|{>:10}|".format(results[0][4])
-                row += "{>:10}|".format(results[0][5])
-                row += "{>:12}|\n".format(results[0][6])
+            for pokemon in results:
+                row = "\n|Name: {:<5}|\n".format(pokemon[0])
+                row += "|HP: {:<5}|".format(pokemon[1])
+                row += "Type 1: {:<5}|".format(pokemon[2])
+                if pokemon[3] != "":
+                    row += "Type 2:{:<5}|\n".format(pokemon[3])
+                else:
+                    row+= "\n"
+                row += "|Prim. Att: {:<5}|".format(pokemon[4])
+                if pokemon[5] != "":
+                    row += "Sec. Att: {:<5}|".format(pokemon[5])
+                if pokemon[6] != 0 and pokemon[6] != "":
+                    row += "Evolves at lvl: {:<5}|\n".format(pokemon[6])
+                else:
+                    row += "\n"
                 print(row)
                 
     elif table_name == "evolutions":
@@ -111,22 +188,28 @@ def list_table(table_name):
             print("EVOLUTIONS TABLE")
             print("-"*40)
             header_str = "\n|{:^10}|\n".format("parent poke")
-            header_str += "|{^:10}|".format("child poke")
-            header_str += "{^:6}|".format("evolved?")
-            header_str += "{^:6}|".format("item?")
-            header_str+= "{^:16}|\n".format("item name")
-            header_str+= "{^:8}|".format("traded?")
-            header_str += "{^:5}|\n".format("bred?")
-            header_str+= "|{^:25}|\n".format("additional notes")
+            header_str += "|{:^10}|\n".format("child poke")
+            header_str += "{:^6}|".format("evolved?")
+            header_str += "{:^4}|".format("item?")
+            header_str+= "{:^8}|\n".format("item name")
+            header_str+= "|{:^8}|".format("traded?")
+            header_str += "{:^5}|\n".format("bred?")
+            header_str+= "|{:^10}|\n".format("additional notes")
             print(header_str)
-            print("-"*20)
+            print("-"*40)
 
-            for attack in results:
-                header_str = "\n|{:^10}|\n".format(results[0][0])
-                header_str += "|{^:10}|".format(results[0][1])
-                header_str += "{^:6}|".format(str(results[0][2]))
-                header_str += "{^:6}|".format(str(results[0][3]))
-                header_str+= "{^:16}|\n".format(results[0][4])
-                header_str+= "{^:8}|".format(str(results[0][5]))
-                header_str += "{^:5}|\n".format(str(results[0][6]))
-                header_str+= "|{^:25}|\n".format(results[0][7])
+            for evolution in results:
+                row = "\n|Parent: {:<5}|\n".format(evolution[0])
+                row += "|Child: {:<5}|\n".format(evolution[1])
+                if evolution[2] != 0 and evolution[2] != "":
+                    row += "|{:<6}|\n".format("Parent evolves")
+                if evolution[3] != 0 and evolution[3] != "":
+                    row += "|{:<3} ".format("Parent has")
+                    row+= "item {:<16}|\n".format(evolution[4].strip() + " used")
+                if evolution[5] != 0 and evolution[5] != "":
+                    row+= "|{:<8}|\n".format("Parent is traded")
+                if evolution[6] != 0 and evolution [6] != "":
+                    row += "|{:<5}|\n".format("Parent is bred")
+                if evolution[7] != "" and evolution[7] != 0 and evolution[7] != '0':
+                    row+= "|Additional Notes: {:<10}|\n".format(evolution[7].strip())
+                print(row)
