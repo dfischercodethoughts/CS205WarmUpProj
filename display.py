@@ -197,7 +197,7 @@ def list_table(table_name):
         sql = 'select parent_poke,child_poke,evolved,item_used,item,traded,bred,notes from evolutions;'
         results = menu_options.execute(sql)
         if results:
-            print("EVOLUTIONS TABLE")
+            print("\n{:^46}" . format("EVOLUTIONS TABLE"))
             for evolution in results:
                 print(" " + "_"*45)
                 parent_poke = evolution[0][0].upper() + evolution[0][1:len(evolution[0])]
@@ -218,3 +218,9 @@ def list_table(table_name):
         else:
                 raise validate.Input_Error("No evolutions. Perhaps the db has not been set up yet.")
 
+def display_all_tables():
+    print("\nLISTING ALL TABLES:")
+    list_table("evolutions")
+    list_table("pokemon")
+    list_table("locations")
+    list_table("attacks")

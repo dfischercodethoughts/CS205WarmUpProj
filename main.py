@@ -15,7 +15,7 @@ import display
 def main():
     print("Welcome to the PokeDB!")
     user_raw = ""
-    
+
     while True:
         try:
             print("\nEnter command:")
@@ -37,6 +37,9 @@ def main():
                 break
             if user_words[0].lower() == 'list':
                 if len(user_words) == 2:
+
+                    if user_words[1].lower() == 'all':
+                        display.display_all_tables()
                     
                     validate.check_table_name(user_words[1].lower())
                     display.list_table(user_words[1].lower())

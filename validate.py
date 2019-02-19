@@ -36,7 +36,7 @@ def check_in_attacks(word):
 
 def check_table_name(word):
     #returns true if table name, false if not
-    table_name_dic = ['attacks','pokemon','locations','evolutions','location']
+    table_name_dic = ['all','attacks','pokemon','locations','evolutions','location']
     if word.lower() in table_name_dic:
         return True
 
