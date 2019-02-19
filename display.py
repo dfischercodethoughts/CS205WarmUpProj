@@ -29,7 +29,8 @@ def display_pokemon(dictionary):
     print(first_last_str)
 
 def display_attack(attack_dic):
-    
+    #test
+    print("functionality to come")
     
 def display_pokemon_evolutions(list_of_dics, poke_name):
     header = poke_name[0].upper() + poke_name[1:len(poke_name)] + " Evolutions"
