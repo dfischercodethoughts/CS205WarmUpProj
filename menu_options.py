@@ -104,10 +104,6 @@ def select_pokemon_evolutions(pokemon):
     parent_sql += ' from pokemon inner join evolutions on evolutions.child_poke = pokemon.name where pokemon.name = "' + \
                  pokemon.lower() + '";'
     parent_results = execute(parent_sql)
-    print("child results")
-    print(child_results)
-    print("parent results")
-    print(parent_results)
 
     # returns list of dictionaries with keys and values
     
