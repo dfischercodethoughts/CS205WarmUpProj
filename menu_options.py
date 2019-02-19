@@ -33,7 +33,29 @@ def select_pokemon(pokemon):
 def select_attack(attack):
     sql = 'select attacks.name, attacks.damage,attacks.effect,attacks.targets,attacks.power_points,attacks.accuracy'
     sql += ', attacks.location_name from attacks where name = "' + attack + '";'
-    print("functionality to come")
+
+    #attack should be unique since name is primary key
+    attack = execute(sql)
+
+    dic_to_return = {}
+    if attack:
+        dic_to_return['name'] = attack[0][0]
+        dic_to_return['damage'] = attack[0][1]
+        dic_to_return['effect'] = attack[0][2]
+        dic_to_return['targets'] = attack[0][3]
+        dic_to_return['pp'] = attack[0][4]
+        dic_to_return['acc'] = attack[0][5]
+        dic_to_return['location'] = attack[0][6]
+    else:
+        dic_to_return['name'] = ""
+        dic_to_return['damage'] = 0
+        dic_to_return['effect'] = ""
+        dic_to_return['targets'] = ""
+        dic_to_return['pp'] = 0
+        dic_to_return['acc'] = 0
+        dic_to_return['location'] = ""
+    return dic_to_return
+        
 
 
 #Want to return dictionary of attacks based on pokemon that is typed in
