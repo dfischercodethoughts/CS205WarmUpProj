@@ -132,7 +132,7 @@ def display_pokemon_in_location(pokemon_array,location_name):
         for pokemon in pokemon_array:
             poke_name = pokemon[0][0].upper()
             poke_name += pokemon[0][1:len(pokemon[0])]
-            display_key_and_values("",poke_name,5,35)
+            display_key_and_value("",poke_name,5,35)
         print(" " + "_"*40)
     else:
         print("No pokemon found for that location.")
