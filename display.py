@@ -159,7 +159,10 @@ def list_table(table_name):
             print(header_str)
             print("|{:^56}|".format(""))
             for location in results:
-                display_key_and_value(location[0],location[1],25,30)
+                if location[1] != "" and location[1] != "0" and location[1] != None and location[1] != 0:
+                    display_key_and_value(location[0],location[1],25,30)
+                else:
+                    display_key_and_value(location[0],"No description",25,30)
             print(" " + "_"*55)
 
         else:
@@ -180,17 +183,19 @@ def list_table(table_name):
             print("EVOLUTIONS TABLE")
             for evolution in results:
                 print(" " + "_"*45)
-                display_key_and_value("Parent Poke",evolution[0],15,30)
-                display_key_and_value("Child Poke", evolution[1],15,30)
+                parent_poke = evolution[0][0].upper() + evolution[0][1:len(evolution[0])]
+                child_poke = evolution[1][0].upper() + evolution[1][1:len(evolution[1])]
+                display_key_and_value("Parent Poke",parent_poke,15,30)
+                display_key_and_value("Child Poke", child_poke,15,30)
                 if evolution[2] == 1:
-                    display_key_and_value("", "Evolves through level up",15,30)
+                    display_key_and_value("Acquired", "through level up",15,30)
                 if evolution[3] == 1 and evolution[4] != None:
-                    display_key_and_value("","Transforms by using " + evolution[4],15,30)
+                    display_key_and_value("Acquired","by using " + evolution[4],15,30)
                 if evolution[5] == 1:
-                    display_key_and_value("","Transforms through trading", 15, 30)
+                    display_key_and_value("Acquired","through trading", 15, 30)
                 if evolution[6] == 1:
-                    display_key_and_value("","Transforms through breeding",15,30)
-                if evolution[7] != None and evolution[7] != 0 and evolution[7] != "":
+                    display_key_and_value("Acquired","through breeding",15,30)
+                if evolution[7] != None and evolution[7] != 0 and evolution[7] != "" and evolution[7] != "0":
                     display_key_and_value("Additional reqs",evolution[7],15,30)
                 print(" " +"_"*45)
         else:
