@@ -173,7 +173,6 @@ def list_table(table_name):
         print("POKEMON")
         print(results)
         for pokemon in results:
-
             display_pokemon(pokemon)
 
     elif table_name == "evolutions":
