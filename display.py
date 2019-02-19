@@ -29,6 +29,24 @@ def display_pokemon(dictionary):
         display_key_and_value("evolves at level",dictionary.get("evolution_level"),16,15)
     print(first_last_str)
 
+def display_attack(dic):
+    print(" " + "_" * 51)
+    display_key_and_value("Attack Name",dic.get("name"),20,30)
+    if dic.get("damage") != None and str(dic.get("damage")) != "" and dic.get("damage") != 0:
+        display_key_and_value("Damage",str(dic.get("damage")),20,30)
+    else:
+        display_key_and_value("No damage","see effect",20,30)
+    display_key_and_value("Targets",dic.get("targets"),20,30)
+    display_key_and_value("Power points",dic.get("pp"),20,30)
+    if dic.get("acc") != "0" and dic.get("acc") != None and dic.get("acc")!=0 and str(dic.get("acc"))!="":
+        display_key_and_value("Accuracy",str(dic.get("acc")),20,30)
+    else:
+        display_key_and_value("No accuracy","See effect",20,30)
+    if dic.get("location") != "" and dic.get("location") != None and dic.get("location") != 0 and dic.get("location") != "0":
+        display_key_and_value("Found in",dic.get("location"),20,30)
+    display_key_and_value("Effect",dic.get("effect"),20,30)
+    print(" " + "_" * 51)
+
 def display_pokemon_evolutions(list_of_dics, poke_name):
     header = poke_name[0].upper() + poke_name[1:len(poke_name)] + " Evolutions"
     print("\n\n{:^50}".format(header))
