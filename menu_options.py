@@ -33,7 +33,7 @@ def select_pokemon(pokemon):
 def select_attack(attack):
     sql = 'select attacks.name, attacks.damage,attacks.effect,attacks.targets,attacks.power_points,attacks.accuracy'
     sql += ', attacks.location_name from attacks where name = "' + attack + '";'
-    print("functionality to come")
+
     #attack should be unique since name is primary key
     attack = execute(sql)
 
