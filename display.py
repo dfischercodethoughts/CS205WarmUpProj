@@ -126,7 +126,7 @@ def list_table(table_name):
         sql = 'select name, damage, effect, targets, power_points, accuracy, location_name from attacks;'
         results = menu_options.execute(sql)
         if results:
-            print("ATTACKS TABLE")
+            print("{:^51}" . format("ATTACKS TABLE"))
 
             for attack in results:
                 print(" " + "_" * 51)
@@ -154,8 +154,8 @@ def list_table(table_name):
         if results:
             print("{:^55}" . format("LOCATIONS"))
             print(" " + "_"*55)
-            header_str = "\n|{:^25}:".format("name")
-            header_str += "{:^30}|".format("description")
+            header_str = "\n|{:^25}:".format("Name")
+            header_str += "{:^30}|".format("Description")
             print(header_str)
             print("|{:^56}|".format(""))
             for location in results:
@@ -170,8 +170,8 @@ def list_table(table_name):
 
     elif table_name == "pokemon":
         results = menu_options.select_all_pokemon()
-        print("POKEMON")
-        print(results)
+        print("{:^34}" . format("POKEMON"))
+       # print(results)
         for pokemon in results:
 
             display_pokemon(pokemon)
