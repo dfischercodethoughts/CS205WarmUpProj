@@ -148,11 +148,25 @@ def select_all_pokemon():
         list_to_ret.append(dic)
     return list_to_ret
 
+def select_attack(attack):
+    sql = 'select 
+
 def select_pokemon_locations(pokemon):
     sql = 'select location_name from location_reference where pokemon_name = "' + pokemon + '";'
     results = execute(sql)
     to_return = []
     for location in results:
         to_return.append(location)
+    return to_return
+
+
+def select_pokemon_from_location(location):
+    #returns list of pokemon name
+    sql = "select pokemon_name from location_reference where location_name = '" + location + "';"
+    results = execute(sql)
+    to_return = []
+    if results:
+        for pokemon in results:
+            to_return.append(pokemon)
     return to_return
     
