@@ -1,21 +1,22 @@
 import menu_options
+import validate
 
-def display_key_and_value(key,value,left_size=25,right_size=25):
+def display_key_and_value(key,value,left_size=15,right_size=15):
     if value != "" and value != 0:
         if value == None:
             value = ""
         new_key = key
         if len(key) > 2:
             new_key = key[0].upper() + key[1:len(key)].lower()
-        return_str = "|{:>" + str(left_size) + "}:{:<" + str(right_size) + "}|"
+        return_str = "|{:<" + str(left_size)+"}:{:<" + str(right_size) + "}|"
         return_str = return_str.format(new_key,value)
         print(return_str)
         return True
     return False
 
 def display_pokemon(dictionary):
-    first_last_str = " "
-    first_last_str += "-" * 51
+    first_last_str = ""
+    first_last_str += "-" * 34
     print(first_last_str)
     display_key_and_value("name",dictionary.get("name"))
     display_key_and_value("type 1",dictionary.get("type1"))
@@ -89,7 +90,7 @@ def display_pokemon_attacks(dic,pokemon_name):
         display_key_and_value("Effect",dic.get("secondary_att_effect"),20,30)
     else:
         print("No secondary attack found.")
-
+    print("-" * 52)
 def display_pokemon_locations(location_array,pokemon_name):
     if location_array:
         to_display = pokemon_name[0].upper() + " can be found in:"
@@ -108,7 +109,7 @@ def list_table(table_name):
         if results:
             print("ATTACKS TABLE")
             print("-"*35)
-            header_str = "\n|{:^10}|\n".format("name")
+            header_str = "|{:^10}|\n".format("name")
             header_str += "|{:^6}|".format("damage")
             header_str += "{:^10}|".format("targets")
             header_str += "{:^3}|\n".format("PP")
@@ -116,17 +117,19 @@ def list_table(table_name):
             header_str += "{:^20}|\n".format("found in")
             header_str += "|{:^30}|\n".format("effect")
             print(header_str)
-            print("-"*20)
+            print("-"*35)
             
             for attack in results:
+                print("-" * 35)
                 row = "\n|{:<15}|\n".format("Name: " + attack[0])
                 row += "|{:<10}|".format("Damage: " + str(attack[1]))
                 row += "{:<15}|".format("Targets: " + attack[3])
-                row += "{:<5}|\n".format("PP: "+  str(attack[4]))
+                row += "{:<5}|\n".format("PP: " + str(attack[4]))
                 row += "|{:<11}|".format("Acc: " + str(attack[5]))
                 row += "{:<20}|\n".format("Found: " + attack[6])
                 row += "|{:<30}|\n".format("Effect: " + attack[2])
                 print(row)
+                print("-" * 35)
         else:
             raise validate.Input_Error("No attacks. Perhaps the db has not been set up yet.")
     elif table_name == "locations":
@@ -135,11 +138,11 @@ def list_table(table_name):
         if results:
             print("LOCATIONS")
             print("-"*51)
-            header_str = "\n|{:^25}:".format("name")
-            header_str += "{:^30}|\n".format("description")
+            header_str = "\n|{:^25}::".format("Name")
+            header_str += "{:^25}|\n".format("Description")
             print(header_str)
             for location in results:
-                display_key_and_value(location[0],location[1],25,30)
+                display_key_and_value(location[0], location[1],25,25)
                 
         else:
             raise validate.Input_error("No locations. Perhaps the db has not been set up yet.")
