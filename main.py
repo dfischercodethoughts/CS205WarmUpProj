@@ -57,7 +57,7 @@ def main():
                         results = menu_options.select_pokemon_attacks(user_words[0])
                         display.display_pokemon_attacks(results,user_words[0])
                         
-                    elif user_words[1].lower() == 'location' or user_words[1].lower == 'locations':
+                    elif user_words[1].lower() == 'location' or user_words[1].lower() == 'locations':
                         results = menu_options.select_pokemon_locations(user_words[0])
                         display.display_pokemon_locations(results,user_words[0])
                         

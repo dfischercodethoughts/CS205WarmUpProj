@@ -4,15 +4,15 @@ import low_level
 import validate
 
 
-user_words = ""
+#user_words = ""
 
 def execute(string):
     #assumes properly formatted input
-    print("\nExecuting: " + string)
+    #print("\nExecuting: " + string)
     con = low_level.open_db(DATABASE_NAME)
     results =  low_level.execute_sql(string,con)
     con.close()
-    print("Done.")
+    #print("Done.")
     return results
 
 def select_pokemon(pokemon):
@@ -29,6 +29,11 @@ def select_pokemon(pokemon):
             'evolution_level': results[0][6]
             }
     return dict_to_return
+
+def select_attack(attack):
+    sql = 'select attacks.name, attacks.damage,attacks.effect,attacks.targets,attacks.power_points,attacks.accuracy'
+    sql += ', attacks.location_name from attacks where name = "' + attack + '";'
+    print("functionality to come")
 
 
 #Want to return dictionary of attacks based on pokemon that is typed in
@@ -148,10 +153,6 @@ def select_all_pokemon():
         list_to_ret.append(dic)
     return list_to_ret
 
-def select_attack(attack):
-    sql = 'select attacks.name, attacks.damage,attacks.effect,attacks.targets,attacks.power_points,attacks.accuracy'
-    sql += ', attacks.location_name from attacks where name = "' + attack + '";'
-    
 
 def select_pokemon_locations(pokemon):
     sql = 'select location_name from location_reference where pokemon_name = "' + pokemon + '";'

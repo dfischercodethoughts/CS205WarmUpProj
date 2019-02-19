@@ -25,6 +25,15 @@ def check_in_pokemon(word):
     
     return False
 
+def check_in_attacks(word):
+    con = low_level.open_db("pokedb.db")
+    attack = word.lower().strip()
+    result = low_level.execute_sql('select name from attacks where name = "' + attack + '";',con)
+    con.close()
+    if result:
+        return True
+    return False
+
 def check_table_name(word):
     #returns true if table name, false if not
     table_name_dic = ['attacks','pokemon','locations','evolutions','location']

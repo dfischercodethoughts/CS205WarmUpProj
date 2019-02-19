@@ -35,7 +35,7 @@ def display_attack(attack_dic):
     
 def display_pokemon_evolutions(list_of_dics, poke_name):
     header = poke_name[0].upper() + poke_name[1:len(poke_name)] + " Evolutions"
-    print("{:^50}".format(header))
+    print("\n{:^50}".format(header))
     print("-" * 52)
     for dic in list_of_dics:
         print("-" * 52)
@@ -52,8 +52,8 @@ def display_pokemon_evolutions(list_of_dics, poke_name):
             display_key_and_value("", "By evolution.",20,30)
         if dic.get("is_traded") != None and dic.get("is_traded") != 0:
             display_key_and_value("","By trading.",20,30)
-        if dic.get("additional_requirements") != 0 and dic.get("additional_requirements") != None and dic.get("additional_requirements") != "":
-            display_key_and_value("Additional reqs:",dic.get("additional_requirements"))
+        if dic.get("additional_requirements") != '0' and dic.get("additional_requirements") != 0 and dic.get("additional_requirements") != None and dic.get("additional_requirements") != "":
+            display_key_and_value("Additional reqs",dic.get("additional_requirements"))
         print("-" * 52)
     print("No more associated evolutions")
 
@@ -131,16 +131,6 @@ def list_table(table_name):
         results = menu_options.execute(sql)
         if results:
             print("ATTACKS TABLE")
-            print("-"*35)
-            header_str = "\n|{:^10}|\n".format("name")
-            header_str += "|{:^6}|".format("damage")
-            header_str += "{:^10}|".format("targets")
-            header_str += "{:^3}|\n".format("PP")
-            header_str+= "|{:^8}|".format("accuracy")
-            header_str += "{:^20}|\n".format("found in")
-            header_str += "|{:^30}|\n".format("effect")
-            print(header_str)
-            print("-"*20)
             
             for attack in results:
                 print(" " + "_" * 51)
@@ -167,13 +157,15 @@ def list_table(table_name):
         sql = "select name, description from locations;"
         results = menu_options.execute(sql)
         if results:
-            print("LOCATIONS")
-            print("-"*51)
+            print("{:^55}" . format("LOCATIONS"))
+            print(" " + "_"*55)
             header_str = "\n|{:^25}:".format("name")
-            header_str += "{:^30}|\n".format("description")
+            header_str += "{:^30}|".format("description")
             print(header_str)
+            print("|{:^56}|".format(""))
             for location in results:
                 display_key_and_value(location[0],location[1],25,30)
+            print(" " + "_"*55)
                 
         else:
             raise validate.Input_error("No locations. Perhaps the db has not been set up yet.")
