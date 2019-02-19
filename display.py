@@ -28,7 +28,7 @@ def display_pokemon(dictionary):
     if dictionary.get("evolution_level") != 0:
         display_key_and_value("evolves at level",dictionary.get("evolution_level"))
     print(first_last_str)
-    
+
 def display_pokemon_evolutions(list_of_dics, poke_name):
     header = poke_name[0].upper() + poke_name[1:len(poke_name)] + " Evolutions"
     print("{:^50}".format(header))
@@ -56,7 +56,7 @@ def display_pokemon_evolutions(list_of_dics, poke_name):
 def display_pokemon_attacks(dic,pokemon_name):
     header = pokemon_name[0].upper() + pokemon_name[1:len(pokemon_name)].lower()
     header = header + " Attacks"
-    
+
     print("{:^50}".format(header))
     print("-" * 52)
     if dic.get("primary_att_name") != "":
@@ -118,7 +118,7 @@ def list_table(table_name):
             header_str += "|{:^30}|\n".format("effect")
             print(header_str)
             print("-"*35)
-            
+
             for attack in results:
                 print("-" * 35)
                 row = "\n|{:<15}|\n".format("Name: " + attack[0])
@@ -143,18 +143,18 @@ def list_table(table_name):
             print(header_str)
             for location in results:
                 display_key_and_value(location[0], location[1],25,25)
-                
+
         else:
             raise validate.Input_error("No locations. Perhaps the db has not been set up yet.")
-    
+
     elif table_name == "pokemon":
         results = menu_options.select_all_pokemon()
         print("POKEMON")
         print(results)
         for pokemon in results:
-            
+
             display_pokemon(pokemon)
-                
+
     elif table_name == "evolutions":
         sql = 'select parent_poke,child_poke,evolved,item_used,item,traded,bred,notes from evolutions;'
         results = menu_options.execute(sql)

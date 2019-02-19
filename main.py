@@ -56,12 +56,16 @@ def main():
                     if user_words[1].lower() == 'attacks':
                         results = menu_options.select_pokemon_attacks(user_words[0])
                         display.display_pokemon_attacks(results,user_words[0])
-                    elif user_words[1].lower() == 'location' or user_words[1].lower == 'locations':
+                        
+                    elif user_words[1].lower() == 'location' or user_words[1].lower() == 'locations':
                         results = menu_options.select_pokemon_locations(user_words[0])
                         display.display_pokemon_locations(results,user_words[0])
+                        
                     elif user_words[1].lower() == 'evolutions' or user_words[1].lower() == 'evolution':
                         results = menu_options.select_pokemon_evolutions(user_words[0])
                         display.display_pokemon_evolutions(results,user_words[0])
+                    else:
+                        print("Unrecognized second word")
                 else:
                     print("\nWhen searching for pokemon attributes, please enter the pokemon name followed by the attribute name.")
             
@@ -70,10 +74,16 @@ def main():
                 if len(user_words) == 1:
                     #searching for all pokemon in a given location
                     results = menu_options.select_pokemon_from_location(user_words[0].lower())
-                    display.display_pokemon_in_location(results)
+                    #print(results)
+                    display.display_pokemon_in_location(results,user_words[0])
                 else:
                     print("If searching for all pokemon that can be found in a certain location, please just enter the location name.")
-
+            elif (validate.check_in_attacks(user_words[0].lower())):
+                if len(user_words) == 1:
+                    result = menu_options.select_attack(user_words[0].lower())
+                    display.display_attack(result)
+                else:
+                    print("If trying to get information on an attack, please enter just that attack's name.")
             else:
                 err_msg = "Sorry, that is incorrect input.\n"
                 err_msg += "Tables are attacks/locations/evolutions/pokemon.\n"
