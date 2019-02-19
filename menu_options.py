@@ -100,18 +100,19 @@ def select_pokemon_evolutions(pokemon):
     child_sql += " from pokemon inner join evolutions on evolutions.parent_poke = pokemon.name where pokemon.name = '" + \
                   pokemon.lower() + "';"
     child_results = execute(child_sql)
-    parent_sql = 'select pokemon.name, evolutions.child_poke, evolutions.evolved, evolutions.item_used, evolutions.item,evolutions.traded, evolutions.bred, evolutions.notes'
+    parent_sql = 'select pokemon.name, evolutions.parent_poke, evolutions.evolved, evolutions.item_used, evolutions.item,evolutions.traded, evolutions.bred, evolutions.notes'
     parent_sql += ' from pokemon inner join evolutions on evolutions.child_poke = pokemon.name where pokemon.name = "' + \
                  pokemon.lower() + '";'
     parent_results = execute(parent_sql)
 
     # returns list of dictionaries with keys and values
-    dict_to_return = {}
+    
     list_of_dics = []
     #print("parents")
     for parent in parent_results:
+        dict_to_return = {}
         #print(parent)
-        dict_to_return['poke_name'] = parent[0]
+        dict_to_return['poke_name'] = parent[1]
         dict_to_return['additional_requirements'] = parent[7]
         dict_to_return['is_item_used'] = parent[3]
         dict_to_return['item_used'] = parent[4]
@@ -119,10 +120,12 @@ def select_pokemon_evolutions(pokemon):
         dict_to_return['is_evolve'] = parent[2]
         dict_to_return['is_traded'] = parent[5]
         dict_to_return['is_parent'] = True
+        dict_to_return['is_child'] = False
         list_of_dics.append(dict_to_return)
         
     #print("children")
     for child in child_results:
+        dict_to_return = {}
         #print(child)
         dict_to_return['poke_name'] = child[1]
         dict_to_return['additional_requirements'] = child[7]
@@ -132,7 +135,9 @@ def select_pokemon_evolutions(pokemon):
         dict_to_return['is_evolve'] = child[2]
         dict_to_return['is_traded'] = child[5]
         dict_to_return['is_child'] = True
+        dict_to_return['is_parent'] = False
         list_of_dics.append(dict_to_return)
+        
     #print(list_of_dics)
     return list_of_dics
 
