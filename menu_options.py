@@ -149,7 +149,9 @@ def select_all_pokemon():
     return list_to_ret
 
 def select_attack(attack):
-    sql = 'select 
+    sql = 'select attacks.name, attacks.damage,attacks.effect,attacks.targets,attacks.power_points,attacks.accuracy'
+    sql += ', attacks.location_name from attacks where name = "' + attack + '";'
+    
 
 def select_pokemon_locations(pokemon):
     sql = 'select location_name from location_reference where pokemon_name = "' + pokemon + '";'
