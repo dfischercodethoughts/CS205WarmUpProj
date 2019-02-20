@@ -4,6 +4,8 @@ DATABASE_NAME = 'pokedb.db'
 import os
 if not os.path.isfile(DATABASE_NAME):
     import init_pokedb
+    init_pokedb.create_tables()
+    init_pokedb.import_data()
 
 import sys
 import low_level
